@@ -13,7 +13,8 @@
     "lint-staged": "eslint -c ./.eslintrc.js --fix",
     "lint:next": "next lint",
     "prepare": "husky install",
-    "precommit": "pnpm run lint-fix && pnpm run ts-lint"
+    "precommit": "pnpm run lint-fix && pnpm run ts-lint",
+     "githooks:commit-msg": "commitlint --edit"
   },
   "dependencies": {
     "@hookform/resolvers": "4.1.2",
@@ -27,6 +28,8 @@
     "yup": "1.6.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.8.0",
+    "@commitlint/config-conventional": "19.8.0",
     "@next/eslint-plugin-next": "15.2.0",
     "@tailwindcss/postcss": "^4.0.9",
     "@types/node": "^20",
@@ -45,9 +48,9 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-unused-imports": "4.1.4",
     "eslint-restricted-globals": "0.2.0",
+    "husky": "^8.0.0",
     "prettier": "3.3.3",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5",
-    "husky": "^8.0.0"
+    "typescript": "^5"
   }
 }
