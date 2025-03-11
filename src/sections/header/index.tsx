@@ -29,21 +29,29 @@ const navigationItems = [
 
 const Header = () => (
   <div>
-    <div className="w-full h-[88px] flex items-center justify-center font-[500]">
+    <div
+      className={clsx({
+        'w-full': true,
+        'h-[88px]': true,
+        flex: true,
+        'items-center': true,
+        'justify-center': true,
+        'font-weight-medium': true,
+        'bg-white': true,
+        'md:bg-granite-grey': true,
+      })}
+    >
       <div className="flex justify-center items-center">
         <div>
           <img src="/LogoBlack.png" alt="Logo" />
         </div>
         <Input
           placeholder="Search"
-          className="h-[56px] w-[433px] p-[16px] rounded-[8px] bg-[#F5F5F5] ml-[32px] text-[14px]"
+          className="h-[56px] w-[433px] p-large rounded-lg bg-cultured ml-xlarge text-sm"
         />
-        <div className="flex ml-[32px] gap-[52px] items-center text-[#656565] text-[16px]">
+        <div className="flex ml-[32px] gap-[52px] items-center text-granite-grey text-base">
           {navigationItems.map(item => (
-            <div
-              key={item.name}
-              className="cursor-pointer hover:text-[#000000]"
-            >
+            <div key={item.name} className="cursor-pointer hover:text-black">
               {item.name}
             </div>
           ))}
