@@ -13,8 +13,8 @@
     "lint-staged": "eslint -c ./.eslintrc.js --fix",
     "lint:next": "next lint",
     "prepare": "husky install",
-    "precommit": "pnpm run lint-fix && pnpm run ts-lint",
-     "githooks:commit-msg": "commitlint --edit"
+    "precommit": "npm run lint-fix && npm run ts-lint",
+    "githooks:commit-msg": "commitlint --edit"
   },
   "dependencies": {
     "@hookform/resolvers": "4.1.2",
