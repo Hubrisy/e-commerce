@@ -1,6 +1,11 @@
-import Input from '../../components/input';
+import HeartSVG from '@assets/svg/heart.svg';
+import clsx from 'clsx';
+
 import Navigation from '../navigation';
 
+import styles from './styles.module.scss';
+
+import Input from '@/components/input';
 import { Routes } from '@/routes/index';
 
 const navigationItems = [
@@ -44,7 +49,9 @@ const Header = () => (
           ))}
         </div>
         <div className="flex ml-[32px] gap-[24px] items-center">
-          <img src="/favorites.png" alt="favorites" />
+          <div className={clsx(styles['heart-svg'], 'cursor-pointer')}>
+            <HeartSVG />
+          </div>
           <img src="/cart.png" alt="cart" />
           <img src="/user.png" alt="user" />
         </div>
