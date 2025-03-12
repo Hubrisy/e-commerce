@@ -1,9 +1,10 @@
+import CartSVG from '@assets/svg/cart.svg';
 import HeartSVG from '@assets/svg/heart.svg';
+import LogoBlack from '@assets/svg/LogoBlack.svg';
+import UserSVG from '@assets/svg/user.svg';
 import clsx from 'clsx';
 
 import Navigation from '../navigation';
-
-import styles from './styles.module.scss';
 
 import Input from '@/components/input';
 import { Routes } from '@/routes/index';
@@ -38,12 +39,11 @@ const Header = () => (
         'justify-center': true,
         'font-weight-medium': true,
         'bg-white': true,
-        'md:bg-granite-grey': true,
       })}
     >
       <div className="flex justify-center items-center">
         <div>
-          <img src="/LogoBlack.png" alt="Logo" />
+          <LogoBlack />
         </div>
         <Input
           placeholder="Search"
@@ -57,11 +57,15 @@ const Header = () => (
           ))}
         </div>
         <div className="flex ml-[32px] gap-[24px] items-center">
-          <div className={clsx(styles['heart-svg'], 'cursor-pointer')}>
+          <div className="cursor-pointer">
             <HeartSVG />
           </div>
-          <img src="/cart.png" alt="cart" />
-          <img src="/user.png" alt="user" />
+          <div className="cursor-pointer">
+            <CartSVG />
+          </div>
+          <div className="cursor-pointer">
+            <UserSVG />
+          </div>
         </div>
       </div>
     </div>

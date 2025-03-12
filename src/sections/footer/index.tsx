@@ -1,3 +1,9 @@
+import Facebook from '@assets/svg/Facebook.svg';
+import Instagram from '@assets/svg/Instagram.svg';
+import LogoWhite from '@assets/svg/LogoWhite.svg';
+import TikTok from '@assets/svg/TikTok.svg';
+import Twitter from '@assets/svg/Twitter.svg';
+
 const services = [
   {
     name: 'Bonus program',
@@ -33,7 +39,7 @@ const Footer = () => (
     <div>
       <div className="flex justify-between">
         <div className="max-w-[384px]">
-          <img src="/LogoWhite.png" alt="" />
+          <LogoWhite />
           <div className="text-[#FFFFFF] mt-[24px] leading-[26px]">
             We are a residential interior design firm located in Portland. Our
             boutique-studio offers more than
@@ -45,7 +51,7 @@ const Footer = () => (
             <div className="leading-[32px]">
               {services.map(item => (
                 <div
-                  className="cursor-pointer hover:border-[1px] border-[white]"
+                  className="cursor-pointer hover:border-b-[1px] border-[white]"
                   key={item.name}
                 >
                   {item.name}
@@ -60,7 +66,7 @@ const Footer = () => (
             <div className="leading-[32px]">
               {assistance.map(item => (
                 <div
-                  className="cursor-pointer hover:border-[1px] border-[white]"
+                  className="cursor-pointer hover:border-b-[1px] border-[white]"
                   key={item.name}
                 >
                   {item.name}
@@ -71,10 +77,10 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-[24px] flex gap-[36px]">
-        <img src="/Twitter.png" alt="" />
-        <img src="/Facebook.png" alt="" />
-        <img src="/Tiktok.png" alt="" />
-        <img src="/Instagram.png" alt="" />
+        <Twitter />
+        <Facebook />
+        <TikTok />
+        <Instagram />
       </div>
     </div>
   </div>
