@@ -1,8 +1,8 @@
-import Facebook from '@assets/svg/Facebook.svg';
-import Instagram from '@assets/svg/Instagram.svg';
-import LogoWhite from '@assets/svg/LogoWhite.svg';
-import TikTok from '@assets/svg/TikTok.svg';
-import Twitter from '@assets/svg/Twitter.svg';
+import LogoWhite from '@assets/svg/logos/LogoWhite.svg';
+import Facebook from '@assets/svg/socialweb/Facebook.svg';
+import Instagram from '@assets/svg/socialweb/Instagram.svg';
+import TikTok from '@assets/svg/socialweb/TikTok.svg';
+import Twitter from '@assets/svg/socialweb/Twitter.svg';
 
 const services = [
   {

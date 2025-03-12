@@ -1,8 +1,8 @@
-import Cameras from '@assets/svg/camera.svg';
-import Computer from '@assets/svg/computers.svg';
-import Gaming from '@assets/svg/gaming.svg';
-import Headphones from '@assets/svg/headphones.svg';
-import Phone from '@assets/svg/phone.svg';
+import Cameras from '@assets/svg/icons/camera.svg';
+import Computer from '@assets/svg/icons/computers.svg';
+import Gaming from '@assets/svg/icons/gaming.svg';
+import Headphones from '@assets/svg/icons/headphones.svg';
+import Phone from '@assets/svg/icons/phone.svg';
 
 const navigation = [
   { name: 'Phones', section: <Phone /> },

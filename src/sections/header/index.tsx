@@ -1,13 +1,15 @@
-import CartSVG from '@assets/svg/cart.svg';
-import HeartSVG from '@assets/svg/heart.svg';
-import LogoBlack from '@assets/svg/LogoBlack.svg';
-import UserSVG from '@assets/svg/user.svg';
+import CartSVG from '@assets/svg/icons/cart.svg';
+import HeartSVG from '@assets/svg/icons/heart.svg';
+import UserSVG from '@assets/svg/icons/user.svg';
+import LogoBlack from '@assets/svg/logos/LogoBlack.svg';
 import clsx from 'clsx';
 
 import Navigation from '../navigation';
 
 import Input from '@/components/input';
 import { Routes } from '@/routes/index';
+
+const userIcons = [<CartSVG />, <HeartSVG />, <UserSVG />];
 
 const navigationItems = [
   {
@@ -57,15 +59,11 @@ const Header = () => (
           ))}
         </div>
         <div className="flex ml-[32px] gap-[24px] items-center">
-          <div className="cursor-pointer">
-            <HeartSVG />
-          </div>
-          <div className="cursor-pointer">
-            <CartSVG />
-          </div>
-          <div className="cursor-pointer">
-            <UserSVG />
-          </div>
+          {userIcons.map((item, index) => (
+            <div className="cursor-pointer" key={index}>
+              {item}
+            </div>
+          ))}
         </div>
       </div>
     </div>
