@@ -1,69 +1,31 @@
-import CartSVG from '@assets/svg/icons/cart.svg';
-import HeartSVG from '@assets/svg/icons/heart.svg';
-import UserSVG from '@assets/svg/icons/user.svg';
 import LogoBlack from '@assets/svg/logos/LogoBlack.svg';
-import clsx from 'clsx';
 
 import Navigation from '../navigation';
 
+import DesktopNav from './headernav/Desktop';
+import MobileNav from './headernav/Mobile';
+
 import Input from '@/components/input';
-import { Routes } from '@/routes/index';
-
-const userIcons = [<CartSVG />, <HeartSVG />, <UserSVG />];
-
-const navigationItems = [
-  {
-    name: 'Home',
-    link: Routes.home,
-  },
-  {
-    name: 'Contact us',
-    link: Routes.contacts,
-  },
-  {
-    name: 'About',
-    link: Routes.about,
-  },
-  {
-    name: 'Blog',
-    link: Routes.blog,
-  },
-];
 
 const Header = () => (
   <div>
     <div
-      className={clsx({
-        'w-full': true,
-        'h-[88px]': true,
-        flex: true,
-        'items-center': true,
-        'justify-center': true,
-        'font-weight-medium': true,
-        'bg-white': true,
-      })}
+      className="w-full h-[88px] flex justify-between font-weight-medium bg-white sm:items-center
+          sm:justify-center"
     >
-      <div className="flex justify-center items-center">
+      <div className="flex justify-between mx-large w-full relative sm:justify-center sm:w-fit items-center sm:mx-0">
         <div>
           <LogoBlack />
         </div>
         <Input
           placeholder="Search"
-          className="h-[56px] w-[433px] p-large rounded-lg bg-cultured ml-xlarge text-sm"
+          className="h-[56px] p-large rounded-lg bg-cultured ml-xlarge text-sm hidden lg:w-[350px] md:block w-[200px] xl:w-[433px]"
         />
-        <div className="flex ml-[32px] gap-[52px] items-center text-granite-grey text-base">
-          {navigationItems.map(item => (
-            <div key={item.name} className="cursor-pointer hover:text-black">
-              {item.name}
-            </div>
-          ))}
+        <div className="flex justify-between sm:hidden">
+          <MobileNav />
         </div>
-        <div className="flex ml-[32px] gap-[24px] items-center">
-          {userIcons.map((item, index) => (
-            <div className="cursor-pointer" key={index}>
-              {item}
-            </div>
-          ))}
+        <div className="hidden sm:block">
+          <DesktopNav />
         </div>
       </div>
     </div>

@@ -35,23 +35,25 @@ const assistance = [
 ];
 
 const Footer = () => (
-  <div className="w-full h-[465px] bg-[#000000] flex justify-center items-center text-[14px] text-[#CFCFCF]">
+  <div className="w-full bg-black flex justify-center items-center text-[14px] text-alto sm:h-[465px]">
     <div>
-      <div className="flex justify-between">
-        <div className="max-w-[384px]">
-          <LogoWhite />
-          <div className="text-[#FFFFFF] mt-[24px] leading-[26px]">
+      <div className="flex flex-col justify-between mx-[10px] sm:flex-row">
+        <div className="max-w-[384px] flex flex-col">
+          <div className="m-auto mt-4xlarge sm:m-0">
+            <LogoWhite />
+          </div>
+          <div className="text-white mt-[24px] text-center leading-[26px] sm:text-start">
             We are a residential interior design firm located in Portland. Our
             boutique-studio offers more than
           </div>
         </div>
-        <div className="w-full max-w-[623px] flex justify-between ml-[112px]">
-          <div className="w-[295px]">
-            <h1 className="text-[16px] text-[#FFFFFF]">Services</h1>
-            <div className="leading-[32px]">
+        <div className="w-full max-w-[623px] flex flex-col justify-between sm:flex-row sm:ml-[20px] md:ml-[112px]">
+          <div className="xl:w-[295px] text-center mt-2xlarge sm:text-start sm:mt-0">
+            <h1 className="text-[16px] text-white">Services</h1>
+            <div className="leading-2xlarge">
               {services.map(item => (
                 <div
-                  className="cursor-pointer hover:border-b-[1px] border-[white]"
+                  className="cursor-pointer hover:border-b-[1px] border-white"
                   key={item.name}
                 >
                   {item.name}
@@ -59,14 +61,12 @@ const Footer = () => (
               ))}
             </div>
           </div>
-          <div className="w-[295px]">
-            <h1 className="text-[16px] text-[#FFFFFF]">
-              Assistance to the buyer
-            </h1>
+          <div className="xl:w-[295px] text-center mt-[32px] sm:text-start sm:mt-0">
+            <h1 className="text-[16px] text-white">Assistance to the buyer</h1>
             <div className="leading-[32px]">
               {assistance.map(item => (
                 <div
-                  className="cursor-pointer hover:border-b-[1px] border-[white]"
+                  className="cursor-pointer hover:border-b-[1px] border-white"
                   key={item.name}
                 >
                   {item.name}
@@ -76,7 +76,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="mt-[24px] flex gap-[36px]">
+      <div className="mt-2xlarge mb-4xlarge flex justify-center gap-2xlarge sm:gap-[36px] sm:mt-xlarge sm:mb-0">
         <Twitter />
         <Facebook />
         <TikTok />
