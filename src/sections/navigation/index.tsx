@@ -14,7 +14,7 @@ const navigation = [
 ];
 
 const Navigation = () => (
-  <div className="w-full bg-[#2E2E2E] h-[48px] text-[#656565] font-[500] flex items-center justify-center">
+  <div className="w-full bg-[#2E2E2E] h-[48px] text-granite-grey font-medium hidden items-center justify-center md:flex">
     <div className="flex justify-center items-center">
       {navigation.map((item, index) => (
         <div
@@ -24,7 +24,7 @@ const Navigation = () => (
           <div>{item.section}</div>
           <div className="ml-[8px]">{item.name}</div>
           {index !== navigation.length - 1 && (
-            <div className="h-[24px] w-[1px] bg-granite-grey ml-[48px] mr-[48px]" />
+            <div className="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge" />
           )}
         </div>
       ))}

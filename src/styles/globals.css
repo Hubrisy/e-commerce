@@ -7,10 +7,14 @@ html, body {
 @theme inline {
   --color-cultured: #f5f5f5;
   --color-granite-grey: #656565;
+  --color-alto: #CFCFCF;
 
   --spacing-small: 4px;
   --spacing-medium: 8px;
   --spacing-large: 16px;
-  --spacing-xlarge: 32px;
+  --spacing-xlarge: 24px;
+  --spacing-2xlarge: 32px;
+  --spacing-3xlarge: 40px;
+  --spacing-4xlarge: 48px;
 }
 
