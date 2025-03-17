@@ -35,7 +35,7 @@ const assistance = [
 ];
 
 const Footer = () => (
-  <div className="w-full bg-black flex justify-center items-center text-[14px] text-alto sm:h-[465px]">
+  <div className="w-full bg-black flex justify-center items-center text-[14px] text-alto sm:min-h-[465px]">
     <div>
       <div className="flex flex-col justify-between mx-[10px] sm:flex-row">
         <div className="max-w-[384px] flex flex-col">
@@ -48,7 +48,7 @@ const Footer = () => (
           </div>
         </div>
         <div className="w-full max-w-[623px] flex flex-col justify-between sm:flex-row sm:ml-[20px] md:ml-[112px]">
-          <div className="xl:w-[295px] text-center mt-2xlarge sm:text-start sm:mt-0">
+          <div className="xl:min-w-[295px] text-center mt-2xlarge sm:text-start sm:mt-0">
             <h1 className="text-[16px] text-white">Services</h1>
             <div className="leading-2xlarge">
               {services.map(item => (
@@ -61,9 +61,9 @@ const Footer = () => (
               ))}
             </div>
           </div>
-          <div className="xl:w-[295px] text-center mt-[32px] sm:text-start sm:mt-0">
+          <div className="xl:min-w-[295px] text-center mt-[32px] sm:text-start sm:mt-0">
             <h1 className="text-[16px] text-white">Assistance to the buyer</h1>
-            <div className="leading-[32px]">
+            <div className="leading-2xlarge">
               {assistance.map(item => (
                 <div
                   className="cursor-pointer hover:border-b-[1px] border-white"

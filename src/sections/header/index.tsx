@@ -10,7 +10,7 @@ import Input from '@/components/input';
 const Header = () => (
   <div>
     <div
-      className="w-full h-[88px] flex justify-between font-weight-medium bg-white sm:items-center
+      className="w-full min-h-[88px] flex justify-between font-weight-medium bg-white sm:items-center
           sm:justify-center"
     >
       <div className="flex justify-between mx-large w-full relative sm:justify-center sm:w-fit items-center sm:mx-0">

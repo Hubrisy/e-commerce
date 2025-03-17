@@ -21,7 +21,7 @@ const MobileNav: React.FC = () => {
       {isModal && (
         <div className="fixed inset-0 z-10 bg-[#656565d7] flex justify-end">
           <div
-            className={`${isModal && styles.show} bg-white flex flex-col items-center w-[70%] h-full`}
+            className={`${styles.show} bg-white flex flex-col items-center w-[70%] h-full`}
           >
             <div className="self-end mr-[10px] mt-[10px]">
               <CloseBtn onClick={handleModal} />
@@ -36,7 +36,7 @@ const MobileNav: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="flex gap-[24px] mt-[25px] items-center">
+            <div className="flex gap-xlarge mt-[25px] items-center">
               {userIcons.map((item, index) => (
                 <div className="cursor-pointer" key={index}>
                   {item}
