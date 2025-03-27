@@ -35,7 +35,7 @@ const assistance = [
 ];
 
 const Footer = () => (
-  <div className="w-full bg-black flex justify-center items-center text-[14px] text-alto sm:min-h-[465px]">
+  <div className="w-full bg-god-grey flex justify-center items-center text-[14px] text-alto sm:min-h-[465px] relative z-50">
     <div>
       <div className="flex flex-col justify-between mx-[10px] sm:flex-row">
         <div className="max-w-[384px] flex flex-col">

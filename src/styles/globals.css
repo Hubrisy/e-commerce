@@ -7,7 +7,12 @@ html, body {
 @theme inline {
   --color-cultured: #f5f5f5;
   --color-granite-grey: #656565;
+  --color-baltic-sea:#211C24;
+  --color-god-grey:#181313;
   --color-alto: #CFCFCF;
+  --color-alabaster: #FAFAFA;
+  --color-gallery: #EDEDED;
+  --color-wildsand: #F6F6F6;
 
   --spacing-small: 4px;
   --spacing-medium: 8px;
