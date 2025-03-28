@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Button from '@/components/button';
 import { Container } from '@/components/Container';
 
-const MainScreen: React.FC = () => (
+export const MainScreen: React.FC = () => (
   <div className="min-h-[818px] bg-baltic-sea lg:min-h-[632px]">
     <Container className="relative flex justify-center lg:justify-between gap-3xlarge">
       <div className="text-white pt-[88px] flex flex-col items-center lg:items-start lg:justify-center">
@@ -31,5 +31,3 @@ const MainScreen: React.FC = () => (
     </Container>
   </div>
 );
-
-export default MainScreen;

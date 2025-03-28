@@ -4,7 +4,7 @@ import CloseBtn from '@assets/svg/icons/close2.svg';
 
 import { navigationItems, userIcons } from '../data';
 
-import styles from './mobilestyles.module.scss';
+import styles from './styles.module.scss';
 
 const MobileNav: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
