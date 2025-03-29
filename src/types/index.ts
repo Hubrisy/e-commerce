@@ -1,0 +1,24 @@
+export type Currency = 'USD';
+
+export const currencySymbols: Record<Currency, string> = {
+  USD: '$',
+};
+
+export type ProductCategory =
+  | 'phones'
+  | 'smartwatches'
+  | 'cameras'
+  | 'headphones'
+  | 'computers'
+  | 'gaming';
+
+export type ProductFeature = 'newarrival' | 'bestseller' | 'featured';
+
+export interface Product {
+  name: string;
+  img: string;
+  price: number;
+  currency: Currency;
+  category: ProductCategory;
+  feature?: ProductFeature;
+}

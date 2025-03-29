@@ -1,42 +1,11 @@
 import ArrowLeft from '@assets/svg/icons/arrowleft.svg';
 import ArrowRight from '@assets/svg/icons/arrowright.svg';
-import Camera from '@assets/svg/icons/browsecamera.svg';
-import Computer from '@assets/svg/icons/browsecomputer.svg';
-import Gaming from '@assets/svg/icons/browsegaming.svg';
-import Headphones from '@assets/svg/icons/browseheadphones.svg';
-import Phone from '@assets/svg/icons/browsephone.svg';
-import Watches from '@assets/svg/icons/browsewatches.svg';
+
+import { categories } from './data';
 
 import styles from './styles.module.scss';
 
 import { Container } from '@/components/Container';
-
-const categories = [
-  {
-    name: 'Phones',
-    img: <Phone key="phone" className="stroke-black" />,
-  },
-  {
-    name: 'Smart Watches',
-    img: <Watches key="watches" />,
-  },
-  {
-    name: 'Cameras',
-    img: <Camera key="camera" />,
-  },
-  {
-    name: 'Headphones',
-    img: <Headphones key="headphones" />,
-  },
-  {
-    name: 'Computers',
-    img: <Computer key="computer" />,
-  },
-  {
-    name: 'Gaming',
-    img: <Gaming key="gaming" />,
-  },
-];
 
 export const BrowseByCategory = () => (
   <div className="relative bg-alabaster font-medium py-[64px]">
