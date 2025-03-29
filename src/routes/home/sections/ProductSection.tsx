@@ -58,26 +58,36 @@ const products = [
 export const ProductSection = () => (
   <div className="pt-[88px] bg-white pb-[56px]">
     <Container className="font-medium text-[16px]">
-      <div className="flex justify-between">
-        <div>New Arrival</div>
-        <div>Bestseller</div>
-        <div>Featured Products</div>
+      <div className="max-w-[375px]">
+        <div className="flex justify-between text-granite-grey">
+          <div className="cursor-pointer hover:border-b-[2px] border-black hover:text-black">
+            New Arrival
+          </div>
+          <div className="cursor-pointer hover:border-b-[2px] border-black hover:text-black">
+            Bestseller
+          </div>
+          <div className="cursor-pointer hover:border-b-[2px] border-black hover:text-black">
+            Featured Products
+          </div>
+        </div>
       </div>
-      <div className="flex flex-wrap justify-center mt-2xlarge">
+      <div className="grid grid-cols-2 gap-large mt-2xlarge md:grid-cols-3 xl:grid-cols-4">
         {products.map(item => (
           <div
             key={item.name}
-            className="bg-wildsand min-w-[160px] m-[5px] flex flex-col items-center justify-center rounded-[9px] md:min-w-[200px] lg:min-w-[270px]"
+            className="bg-wildsand pt-[24px] pb-[24px] min-w-[160px] flex flex-col items-center justify-center rounded-[9px]"
           >
-            <div className="mt-[25px] self-end mr-[12px]">
+            <div className="self-end mr-[12px]">
               <Heart />
             </div>
             <Image src={item.img} alt="" className="lg:min-w-[160px]" />
             <div className="h-[96px] max-w-[140px] mt-medium text-center">
               {item.name}
             </div>
-            <div>{item.price}</div>
-            <Button className="w-[140px] bg-black text-white">Buy Now</Button>
+            <div className="font-semibold text-2xl">{item.price}</div>
+            <Button className="w-[140px] min-h-[48px] bg-black text-white sm:min-w-[140px]">
+              Buy Now
+            </Button>
           </div>
         ))}
       </div>

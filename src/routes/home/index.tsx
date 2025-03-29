@@ -1,5 +1,6 @@
 import { BrowseByCategory } from './sections/browseByCategory';
 import { MainScreen } from './sections/MainScreen';
+import { ProductSection } from './sections/ProductSection';
 
 import Footer from '@/sections/footer';
 import Header from '@/sections/header';
@@ -9,6 +10,7 @@ const Home = () => (
     <Header />
     <MainScreen />
     <BrowseByCategory />
+    <ProductSection />
     <Footer />
   </div>
 );
