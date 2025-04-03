@@ -10,7 +10,8 @@ export type ProductCategory =
   | 'cameras'
   | 'headphones'
   | 'computers'
-  | 'gaming';
+  | 'gaming'
+  | 'tablet';
 
 export type ProductFeature = 'newarrival' | 'bestseller' | 'featured';
 

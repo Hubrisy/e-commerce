@@ -21,7 +21,7 @@ export const MainScreen: React.FC = () => (
           Shop now
         </Button>
       </div>
-      <div className="absolute top-[528px] min-w-[320px] lg:relative lg:top-[73px] lg:min-w-[410px]">
+      <div className="absolute top-[528px] max-w-[320px] lg:relative lg:top-[73px] lg:min-w-[410px]">
         <Image
           src={Iphone}
           style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
