@@ -1,18 +1,14 @@
 .redsvg {
   svg {
-    stroke: red;
-    fill: red;
-    // path {
-    //   fill: black;
-    // }
+    path {
+      fill: red;
+    }
   }
 }
 .blacksvg {
   svg {
-    stroke: black;
-    fill: black;
-    // path {
-    //   fill: black;
-    // }
+    path {
+      fill: none;
+    }
   }
 }

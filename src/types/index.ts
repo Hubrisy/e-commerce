@@ -13,7 +13,11 @@ export type ProductCategory =
   | 'gaming'
   | 'tablet';
 
-export type ProductFeature = 'newarrival' | 'bestseller' | 'featured';
+export type ProductFeature =
+  | 'newarrival'
+  | 'bestseller'
+  | 'featured'
+  | undefined;
 
 export interface Product {
   name: string;

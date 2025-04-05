@@ -8,11 +8,47 @@ import { Container } from '@/components/Container';
 import { useFilterContext } from '@/context/Filter';
 import type { ProductCategory } from '@/types';
 
+const allCategories = categories.map(item => item.category);
+
 export const BrowseByCategory = () => {
   const { category, setCategory } = useFilterContext();
 
   const onCategoryClick = (category: ProductCategory) => {
     setCategory(prev => (prev === category ? undefined : category));
+  };
+
+  const goToNextCategory = () => {
+    const index = allCategories.findIndex(item => item === category);
+
+    const nextIndex = index + 1;
+
+    if (!category || index === -1 || nextIndex >= allCategories.length) {
+      setCategory(allCategories[0]);
+
+      return;
+    }
+
+    setCategory(allCategories[nextIndex]);
+  };
+
+  const goToPrevCategory = () => {
+    const index = allCategories.findIndex(item => item === category);
+
+    const prevIndex = index - 1;
+
+    if (!category || index === -1) {
+      setCategory(allCategories[0]);
+
+      return;
+    }
+
+    if (prevIndex < 0) {
+      setCategory(allCategories[allCategories.length - 1]);
+
+      return;
+    }
+
+    setCategory(allCategories[prevIndex]);
   };
 
   return (
@@ -21,10 +57,10 @@ export const BrowseByCategory = () => {
         <div className="mb-4xlarge flex items-center justify-between">
           <div className="text-[24px]">Browse By Category</div>
           <div className="flex min-w-[80px] justify-between">
-            <div>
+            <div onClick={goToPrevCategory}>
               <ArrowLeft />
             </div>
-            <div>
+            <div onClick={goToNextCategory}>
               <ArrowRight />
             </div>
           </div>

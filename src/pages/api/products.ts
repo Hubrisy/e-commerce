@@ -26,7 +26,7 @@ const products: Array<Product> = [
     price: 399,
     currency: 'USD',
     category: 'smartwatches',
-    feature: 'newarrival',
+    feature: 'featured',
   },
   {
     name: 'AirPods Max Silver',
@@ -34,7 +34,7 @@ const products: Array<Product> = [
     price: 549,
     currency: 'USD',
     category: 'headphones',
-    feature: 'newarrival',
+    feature: 'featured',
   },
   {
     name: 'Samsung Galaxy Watch6 Classic 47mm Black',
@@ -42,7 +42,7 @@ const products: Array<Product> = [
     price: 369,
     currency: 'USD',
     category: 'smartwatches',
-    feature: 'newarrival',
+    feature: 'bestseller',
   },
   {
     name: 'Galaxy Z Fold5 Unlocked | 256GB | Phantom Black',
@@ -50,7 +50,7 @@ const products: Array<Product> = [
     price: 1799,
     currency: 'USD',
     category: 'phones',
-    feature: 'newarrival',
+    feature: 'featured',
   },
   {
     name: 'Galaxy Buds FEGraphite',
@@ -58,7 +58,7 @@ const products: Array<Product> = [
     price: 99,
     currency: 'USD',
     category: 'headphones',
-    feature: 'newarrival',
+    feature: 'bestseller',
   },
   {
     name: 'Apple iPad 9 10.2" 64GB Wi-Fi Silver (MK2L3) 2021',
@@ -66,7 +66,7 @@ const products: Array<Product> = [
     price: 399,
     currency: 'USD',
     category: 'tablet',
-    feature: 'newarrival',
+    feature: 'bestseller',
   },
 ];
 
