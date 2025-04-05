@@ -7,17 +7,20 @@ import {
   useState,
 } from 'react';
 
-import type { ProductCategory } from '@/types';
+import type { ProductCategory, ProductFeature } from '@/types';
 
 interface FilterState {
   category?: ProductCategory;
+  feature?: ProductFeature;
 }
 interface FilterContextType extends FilterState {
   setCategory: Dispatch<SetStateAction<FilterState['category']>>;
+  setFeature: Dispatch<SetStateAction<FilterState['feature']>>;
 }
 
 const defaultFilterState: FilterState = {
   category: undefined,
+  feature: undefined,
 };
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
@@ -28,9 +31,14 @@ export const FilterContextProvider: React.FC<PropsWithChildren> = ({
   const [category, setCategory] = useState<FilterState['category']>(
     defaultFilterState.category,
   );
+  const [feature, setFeature] = useState<FilterState['feature']>(
+    defaultFilterState.feature,
+  );
 
   return (
-    <FilterContext.Provider value={{ category, setCategory }}>
+    <FilterContext.Provider
+      value={{ category, setCategory, feature, setFeature }}
+    >
       {children}
     </FilterContext.Provider>
   );

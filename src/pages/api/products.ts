@@ -5,6 +5,7 @@ import type { Product } from '@/types';
 
 const products: Array<Product> = [
   {
+    id: 1,
     name: 'Apple iPhone 14 Pro Max 128GB Deep Purple',
     img: '/img/products/Iphone14pro.png',
     price: 900,
@@ -13,6 +14,7 @@ const products: Array<Product> = [
     feature: 'newarrival',
   },
   {
+    id: 2,
     name: 'Blackmagic Pocket Cinema Camera 6k',
     img: '/img/products/BlackMagicCamera.png',
     price: 2535,
@@ -21,6 +23,7 @@ const products: Array<Product> = [
     feature: 'newarrival',
   },
   {
+    id: 3,
     name: 'Apple Watch Series 9 GPS 41mm Starlight Aluminium Case',
     img: '/img/products/AppleWatch.png',
     price: 399,
@@ -29,6 +32,7 @@ const products: Array<Product> = [
     feature: 'featured',
   },
   {
+    id: 4,
     name: 'AirPods Max Silver',
     img: '/img/products/AirPodsMax.png',
     price: 549,
@@ -37,6 +41,7 @@ const products: Array<Product> = [
     feature: 'featured',
   },
   {
+    id: 5,
     name: 'Samsung Galaxy Watch6 Classic 47mm Black',
     img: '/img/products/SamsungWatch.png',
     price: 369,
@@ -45,6 +50,7 @@ const products: Array<Product> = [
     feature: 'bestseller',
   },
   {
+    id: 6,
     name: 'Galaxy Z Fold5 Unlocked | 256GB | Phantom Black',
     img: '/img/products/SamsungGalaxyPhone.png',
     price: 1799,
@@ -53,6 +59,7 @@ const products: Array<Product> = [
     feature: 'featured',
   },
   {
+    id: 7,
     name: 'Galaxy Buds FEGraphite',
     img: '/img/products/SamsungHeadphones.png',
     price: 99,
@@ -61,6 +68,7 @@ const products: Array<Product> = [
     feature: 'bestseller',
   },
   {
+    id: 8,
     name: 'Apple iPad 9 10.2" 64GB Wi-Fi Silver (MK2L3) 2021',
     img: '/img/products/Ipad.png',
     price: 399,

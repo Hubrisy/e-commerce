@@ -18,11 +18,23 @@ export const BrowseByCategory = () => {
   };
 
   const goToNextCategory = () => {
+    if (!category) {
+      setCategory(allCategories[0]);
+
+      return;
+    }
+
     const index = allCategories.findIndex(item => item === category);
+
+    if (index === -1) {
+      setCategory(allCategories[0]);
+
+      return;
+    }
 
     const nextIndex = index + 1;
 
-    if (!category || index === -1 || nextIndex >= allCategories.length) {
+    if (nextIndex >= allCategories.length) {
       setCategory(allCategories[0]);
 
       return;
@@ -32,15 +44,21 @@ export const BrowseByCategory = () => {
   };
 
   const goToPrevCategory = () => {
-    const index = allCategories.findIndex(item => item === category);
-
-    const prevIndex = index - 1;
-
-    if (!category || index === -1) {
-      setCategory(allCategories[0]);
+    if (!category) {
+      setCategory(allCategories[allCategories.length - 1]);
 
       return;
     }
+
+    const index = allCategories.findIndex(item => item === category);
+
+    if (index === -1) {
+      setCategory(allCategories[allCategories.length - 1]);
+
+      return;
+    }
+
+    const prevIndex = index - 1;
 
     if (prevIndex < 0) {
       setCategory(allCategories[allCategories.length - 1]);
