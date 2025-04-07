@@ -84,7 +84,7 @@ export const ProductSection: React.FC = () => {
                     isItemInFavorites(item.id)
                       ? styles.redsvg
                       : styles.blacksvg,
-                    'self-end mr-[12px] mb-medium transition-all',
+                    'self-end mr-[12px] mb-medium transition-all cursor-pointer',
                   )}
                 >
                   <Heart />

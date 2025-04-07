@@ -15,8 +15,8 @@ const Button: React.FC<PropsWithChildren<ButtonType>> = ({
   <div>
     <button
       className={clsx(
-        'border border-solid m-2 rounded-lg w-50 h-10', // Базовые стили
-        className, // Добавляем переданный класс (он не перезапишет базовые)
+        'border border-solid m-2 rounded-lg w-50 h-10 cursor-pointer',
+        className,
       )}
       onClick={onClick}
       type={type}

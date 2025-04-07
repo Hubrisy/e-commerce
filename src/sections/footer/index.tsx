@@ -34,6 +34,13 @@ const assistance = [
   { name: 'Terms of use of the site' },
 ];
 
+const socialNetwork = [
+  <Twitter key="twitter" />,
+  <Facebook key="facebook" />,
+  <TikTok key="tiktok" />,
+  <Instagram key="instagram" />,
+];
+
 const Footer = () => (
   <div className="w-full bg-god-grey flex justify-center items-center text-[14px] text-alto sm:min-h-[465px] relative z-50">
     <div>
@@ -53,7 +60,7 @@ const Footer = () => (
             <div className="leading-2xlarge">
               {services.map(item => (
                 <div
-                  className="cursor-pointer hover:border-b-[1px] border-white"
+                  className="cursor-pointer border-b-[1px] border-transparent hover:border-white"
                   key={item.name}
                 >
                   {item.name}
@@ -66,7 +73,7 @@ const Footer = () => (
             <div className="leading-2xlarge">
               {assistance.map(item => (
                 <div
-                  className="cursor-pointer hover:border-b-[1px] border-white"
+                  className="cursor-pointer border-b-[1px] border-transparent hover:border-white"
                   key={item.name}
                 >
                   {item.name}
@@ -77,10 +84,11 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-2xlarge mb-4xlarge flex justify-center gap-2xlarge sm:gap-[36px] sm:mt-xlarge sm:mb-0">
-        <Twitter />
-        <Facebook />
-        <TikTok />
-        <Instagram />
+        {socialNetwork.map((item, index) => (
+          <div key={index} className="cursor-pointer">
+            {item}
+          </div>
+        ))}
       </div>
     </div>
   </div>

@@ -75,10 +75,10 @@ export const BrowseByCategory = () => {
         <div className="mb-4xlarge flex items-center justify-between">
           <div className="text-[24px]">Browse By Category</div>
           <div className="flex min-w-[80px] justify-between">
-            <div onClick={goToPrevCategory}>
+            <div onClick={goToPrevCategory} className="cursor-pointer">
               <ArrowLeft />
             </div>
-            <div onClick={goToNextCategory}>
+            <div onClick={goToNextCategory} className="cursor-pointer">
               <ArrowRight />
             </div>
           </div>
@@ -89,7 +89,7 @@ export const BrowseByCategory = () => {
               key={item.name}
               onClick={() => onCategoryClick(item.category)}
               className={clsx(
-                'border-[2px] rounded-2xl bg-gallery p-large text-[16px] flex flex-col items-center transition-all',
+                'border-[2px] rounded-2xl bg-gallery p-large text-[16px] flex flex-col items-center transition-all cursor-pointer',
                 category === item.category
                   ? 'border-black shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff]'
                   : 'border-transparent',
