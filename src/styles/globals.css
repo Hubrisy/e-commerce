@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
 html, body {
-  @apply w-full h-full bg-gray-50 text-gray-900 antialiased;
+  @apply w-full h-full text-gray-900 antialiased;
+}
+
+.slick-dots {
+  bottom: 70px !important;
+}
+
+.slick-dots li{
+  margin: 0 !important;
+  width: 12px !important;
+  height: 12px !important;
 }
 
 @theme inline {
@@ -13,6 +23,7 @@ html, body {
   --color-alabaster: #FAFAFA;
   --color-gallery: #EDEDED;
   --color-wildsand: #F6F6F6;
+  --color-gray: #909090;
 
   --spacing-small: 4px;
   --spacing-medium: 8px;
