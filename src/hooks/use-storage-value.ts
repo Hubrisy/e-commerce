@@ -5,10 +5,12 @@ import { handleError } from '@/utils/error';
 export const useStorageValue = <T>(key: string, defaultValue: T) => {
   const [value, setValue] = useState<T>(() => {
     try {
-      const storedValue = sessionStorage.getItem(key);
+      if (typeof window !== 'undefined') {
+        const storedValue = sessionStorage.getItem(key);
 
-      if (storedValue) {
-        return JSON.parse(storedValue);
+        if (storedValue) {
+          return JSON.parse(storedValue);
+        }
       }
     } catch (error) {
       handleError(error);
