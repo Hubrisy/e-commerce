@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Heart from '@assets/svg/icons/heart.svg';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -12,13 +12,17 @@ import { Container } from '@/components/Container';
 import { Loader } from '@/components/Loader';
 import { useFilterContext } from '@/context/Filter';
 import { useProducts } from '@/hooks/use-products';
-import { getStorage, setStorage } from '@/storage/localstorage';
+import { useStorageValue } from '@/hooks/use-storage-value';
 import { currencySymbols } from '@/types';
 
 export const ProductSection: React.FC = () => {
   const { products, isLoading } = useProducts();
   const { category, feature } = useFilterContext();
-  const [favorites, setFavorites] = useState<Array<number>>([]);
+
+  const [favorites, setFavorites] = useStorageValue<Array<number>>(
+    'favorites',
+    [],
+  );
 
   const isItemInFavorites = (id: number) => favorites.some(item => item === id);
 
@@ -44,18 +48,6 @@ export const ProductSection: React.FC = () => {
       return matchesCategory && matchesFeature;
     });
   }, [products?.length, category, feature]);
-
-  useEffect(() => {
-    const storedFavorites = getStorage('favorites');
-
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
-  }, []);
-
-  useEffect(() => {
-    setStorage('favorites', JSON.stringify(favorites));
-  }, [favorites]);
 
   if (isLoading) {
     return (
