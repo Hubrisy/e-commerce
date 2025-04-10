@@ -94,7 +94,10 @@ export const ProductSection: React.FC = () => {
                 <div className="font-semibold text-2xl mt-large">
                   {currencySymbols[item.currency]} {item.price}
                 </div>
-                <Button className="w-[140px] min-h-[48px] mt-large bg-black text-white sm:min-w-[140px]">
+                <Button
+                  variant="primary"
+                  className="w-[140px] min-h-[48px] mt-large sm:min-w-[140px]"
+                >
                   Buy Now
                 </Button>
               </div>
