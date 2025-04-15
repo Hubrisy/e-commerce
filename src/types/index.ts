@@ -23,4 +23,6 @@ export interface Product {
   category: ProductCategory;
   feature?: ProductFeature;
   id: number;
+  isOnsale?: boolean;
+  isOnMainScreen?: boolean;
 }

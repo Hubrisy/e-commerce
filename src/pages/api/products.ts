@@ -12,6 +12,7 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'phones',
     feature: 'newarrival',
+    isOnMainScreen: true,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'cameras',
     feature: 'newarrival',
+    isOnMainScreen: true,
   },
   {
     id: 3,
@@ -30,6 +32,8 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'smartwatches',
     feature: 'featured',
+    isOnMainScreen: true,
+    isOnsale: true,
   },
   {
     id: 4,
@@ -39,6 +43,8 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'headphones',
     feature: 'featured',
+    isOnMainScreen: true,
+    isOnsale: true,
   },
   {
     id: 5,
@@ -48,6 +54,7 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'smartwatches',
     feature: 'bestseller',
+    isOnMainScreen: true,
   },
   {
     id: 6,
@@ -57,6 +64,7 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'phones',
     feature: 'featured',
+    isOnMainScreen: true,
   },
   {
     id: 7,
@@ -66,6 +74,7 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'headphones',
     feature: 'bestseller',
+    isOnMainScreen: true,
   },
   {
     id: 8,
@@ -75,6 +84,27 @@ const products: Array<Product> = [
     currency: 'USD',
     category: 'tablet',
     feature: 'bestseller',
+    isOnMainScreen: true,
+  },
+  {
+    id: 9,
+    name: 'Apple iPhone 14 Pro 512GB Gold (MQ233)',
+    img: '/img/products/Iphone14proGold.png',
+    price: 1437,
+    currency: 'USD',
+    category: 'tablet',
+    feature: 'bestseller',
+    isOnsale: true,
+  },
+  {
+    id: 10,
+    name: 'Apple iPhone 14 Pro 1TB Gold (MQ2V3)',
+    img: '/img/products/Iphone14proSilver.png',
+    price: 1499,
+    currency: 'USD',
+    category: 'tablet',
+    feature: 'bestseller',
+    isOnsale: true,
   },
 ];
 

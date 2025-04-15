@@ -1,0 +1,15 @@
+.redsvg {
+  svg {
+    path {
+      fill: red;
+      stroke: red;
+    }
+  }
+}
+.blacksvg {
+  svg {
+    path {
+      fill: none;
+    }
+  }
+}
