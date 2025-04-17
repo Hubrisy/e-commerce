@@ -26,3 +26,7 @@ export interface Product {
   isOnsale?: boolean;
   isOnMainScreen?: boolean;
 }
+
+export enum SectionIds {
+  products = 'products',
+}

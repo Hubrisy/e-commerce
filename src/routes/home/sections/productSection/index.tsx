@@ -6,13 +6,14 @@ import { Loader } from '@/components/Loader';
 import { ProductItem } from '@/components/productItem';
 import { useFilterContext } from '@/context/Filter';
 import { useProducts } from '@/hooks/use-products';
-import type { Product } from '@/types';
+import type { Product, SectionIds } from '@/types';
 
 interface Props extends PropsWithChildren {
   products: Array<Product>;
+  id?: SectionIds;
 }
 
-export const ProductSection: React.FC<Props> = ({ products, children }) => {
+export const ProductSection: React.FC<Props> = ({ products, children, id }) => {
   const { isLoading } = useProducts();
   const { category, feature } = useFilterContext();
 
@@ -36,7 +37,7 @@ export const ProductSection: React.FC<Props> = ({ products, children }) => {
   }
 
   return (
-    <div className="pt-[88px] bg-white pb-[56px]">
+    <div id={id} className="pt-[88px] bg-white pb-[56px]">
       <Container className="font-medium text-[16px]">
         <div className="max-w-[375px]">{children}</div>
         {filteredProducts?.length ? (
