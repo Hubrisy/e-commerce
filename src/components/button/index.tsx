@@ -17,6 +17,10 @@ export const buttonVariants = cva(
       fullWidth: {
         true: clsx('w-full'),
       },
+      // height: {
+      //   higher: clsx('min-h-[56px]'),
+      //   lower: clsx('min-h-[48px]'),
+      // },
       isDisabled: {
         true: clsx('cursor-not-allowed opacity-60'),
       },
