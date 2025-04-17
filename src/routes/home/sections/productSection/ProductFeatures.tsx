@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { useFilterContext } from '@/context/Filter';
+import { useScrollContext } from '@/context/Scroll';
 import type { ProductFeature } from '@/types';
 
 const productFeatures: Array<{ name: string; key: ProductFeature }> = [
@@ -20,13 +21,14 @@ const productFeatures: Array<{ name: string; key: ProductFeature }> = [
 
 export const ProductFeatures = () => {
   const { feature, setFeature } = useFilterContext();
+  const { shopRef } = useScrollContext();
 
   const onFeatureClick = (newFeature: ProductFeature) => {
     setFeature(prev => (prev === newFeature ? undefined : newFeature));
   };
 
   return (
-    <div className="flex justify-between text-granite-grey">
+    <div ref={shopRef} className="flex justify-between text-granite-grey">
       {productFeatures.map(item => (
         <div key={item.key} onClick={() => onFeatureClick(item.key)}>
           <div

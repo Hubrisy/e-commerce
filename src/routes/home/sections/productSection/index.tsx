@@ -38,14 +38,7 @@ export const ProductSection: React.FC<Props> = ({ products, children }) => {
   return (
     <div className="pt-[88px] bg-white pb-[56px]">
       <Container className="font-medium text-[16px]">
-        <div className="max-w-[375px]">
-          {/* {isFeatures ? (
-            <ProductFeatures />
-          ) : (
-            <div className="text-2xl font-medium">Discounts up to -50%</div>
-          )} */}
-          {children}
-        </div>
+        <div className="max-w-[375px]">{children}</div>
         {filteredProducts?.length ? (
           <div className="grid grid-cols-2 gap-large mt-2xlarge md:grid-cols-3 xl:grid-cols-4">
             {filteredProducts.map(item => (
