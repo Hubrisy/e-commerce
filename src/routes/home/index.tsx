@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <FilterContextProvider>
-      <div>
+      <div className="relative">
         <Header />
         <MainScreen />
         <BrowseByCategory />

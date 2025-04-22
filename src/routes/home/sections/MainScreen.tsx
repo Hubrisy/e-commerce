@@ -7,9 +7,9 @@ import { SectionIds } from '@/types';
 import { scrollIntoView } from '@/utils/scroll';
 
 export const MainScreen: React.FC = () => (
-  <div className="min-h-[818px] bg-baltic-sea lg:min-h-[632px]">
+  <div className="min-h-[906px] bg-baltic-sea lg:min-h-[632px]">
     <Container className="relative flex justify-center lg:justify-between gap-3xlarge">
-      <div className="text-white pt-[88px] flex flex-col items-center lg:items-start lg:justify-center">
+      <div className="text-white pt-[166px] flex flex-col items-center lg:items-start lg:justify-center">
         <div className="text-[25px] font-semibold text-granite-grey">
           Pro.Beyond.
         </div>
@@ -26,7 +26,7 @@ export const MainScreen: React.FC = () => (
           Shop now
         </Button>
       </div>
-      <div className="absolute top-[528px] max-w-[320px] lg:relative lg:top-[73px] lg:min-w-[410px]">
+      <div className="absolute top-[616px] max-w-[320px] lg:relative lg:top-[73px] lg:min-w-[410px]">
         <Image
           src={Iphone}
           style={{ width: '100%', height: 'auto', objectFit: 'contain' }}

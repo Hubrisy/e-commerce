@@ -14,7 +14,7 @@ const navigation = [
 ];
 
 const Navigation = () => (
-  <div className="w-full bg-[#2E2E2E] h-[48px] text-granite-grey font-medium hidden items-center justify-center md:flex">
+  <div className="w-full mt-[88px] bg-[#2E2E2E] h-[48px] text-granite-grey font-medium hidden items-center justify-center md:flex">
     <div className="flex justify-center items-center">
       {navigation.map((item, index) => (
         <div

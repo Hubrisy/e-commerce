@@ -1,6 +1,7 @@
 import Heart from '@assets/svg/icons/heart.svg';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import Button from '../button';
 
@@ -18,6 +19,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
     'favorites',
     [],
   );
+  const router = useRouter();
 
   const isItemInFavorites = (id: number) => favorites.some(item => item === id);
 
@@ -31,6 +33,10 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
     }
 
     setFavorites(prev => [...prev, id]);
+  };
+
+  const goToProductPage = (slug: number) => {
+    router.push(`/product/${slug}`);
   };
 
   return (
@@ -63,6 +69,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
       <Button
         variant="primary"
         className="w-[140px] min-h-[48px] mt-large sm:min-w-[140px]"
+        onClick={() => goToProductPage(product.id)}
       >
         Buy Now
       </Button>
