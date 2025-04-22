@@ -9,8 +9,6 @@ import { SummerSale } from './sections/SummerSale';
 
 import { FilterContextProvider } from '@/context/Filter';
 import { useProducts } from '@/hooks/use-products';
-import Footer from '@/sections/footer';
-import Header from '@/sections/header';
 import { SectionIds } from '@/types';
 
 const Home = () => {
@@ -29,7 +27,6 @@ const Home = () => {
   return (
     <FilterContextProvider>
       <div className="relative">
-        <Header />
         <MainScreen />
         <BrowseByCategory />
         <ProductSection
@@ -43,7 +40,6 @@ const Home = () => {
           <div className="text-2xl font-medium">Discounts up to -50%</div>
         </ProductSection>
         <SummerSale />
-        <Footer />
       </div>
     </FilterContextProvider>
   );

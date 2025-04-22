@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html, body {
-  @apply w-full h-full text-gray-900 antialiased;
+  @apply w-full text-gray-900 antialiased;
 }
 
 .slick-dots {
