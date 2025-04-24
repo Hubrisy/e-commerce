@@ -27,7 +27,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product }) => (
       </div>
     </MobileContainer>
     <div>
-      <ProductCharacteristics productId={product.id} />
+      <ProductCharacteristics product={product} />
     </div>
   </div>
 );

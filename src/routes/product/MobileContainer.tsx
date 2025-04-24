@@ -1,5 +1,14 @@
 import type { PropsWithChildren } from 'react';
+import clsx from 'clsx';
 
-export const MobileContainer: React.FC<PropsWithChildren> = ({ children }) => (
-  <div className="max-w-[340px] m-auto bg-white">{children}</div>
+interface MobileContainerProps {
+  className?: string;
+}
+
+export const MobileContainer: React.FC<
+  PropsWithChildren<MobileContainerProps>
+> = ({ children, className }) => (
+  <div className={clsx('max-w-[340px] m-auto bg-white', className)}>
+    {children}
+  </div>
 );

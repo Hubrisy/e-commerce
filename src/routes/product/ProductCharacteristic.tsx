@@ -4,6 +4,7 @@ import Car from '@assets/svg/delivery/Car.svg';
 import Shop from '@assets/svg/delivery/Shop.svg';
 import clsx from 'clsx';
 
+import type { ProductPageProps } from '.';
 import {
   characteristics,
   colors,
@@ -12,6 +13,7 @@ import {
   productStorageSizes,
 } from './data';
 import { MobileContainer } from './MobileContainer';
+import { RelatedProducts } from './RelatedProducts';
 
 import Button from '@/components/button';
 
@@ -21,20 +23,18 @@ const delivery = [
   { img: <Approved />, title: 'Guaranteed', desc: '1 year' },
 ];
 
-interface ProdcutCharProps {
-  productId: number;
-}
-
-export const ProductCharacteristics: React.FC<ProdcutCharProps> = ({
-  productId,
+export const ProductCharacteristics: React.FC<ProductPageProps> = ({
+  product,
 }) => {
   const thisProductStorageSize = productStorageSizes.find(
-    item => item.id === productId,
+    item => item.id === product.id,
   );
-  const thisProductChar = characteristics.find(item => item.id === productId);
-  const thisProductDetails = productDetails.find(item => item.id === productId);
+  const thisProductChar = characteristics.find(item => item.id === product.id);
+  const thisProductDetails = productDetails.find(
+    item => item.id === product.id,
+  );
   const thisProductDescription = productDescriptions.find(
-    item => item.id === productId,
+    item => item.id === product.id,
   );
 
   return (
@@ -80,10 +80,6 @@ export const ProductCharacteristics: React.FC<ProdcutCharProps> = ({
         </div>
         <div className="text-[14px] font-normal mt-6 text-[#6C6C6C]">
           {thisProductDescription?.description}
-          <span className="text-black border-b-black border-b-[1px] leading-6">
-            {' '}
-            more...
-          </span>
         </div>
         <div>
           <Button fullWidth className="min-h-[56px] mt-4">
@@ -109,34 +105,42 @@ export const ProductCharacteristics: React.FC<ProdcutCharProps> = ({
         </div>
       </MobileContainer>
       <div className="bg-[#FAFAFA] mt-3xlarge">
-        <MobileContainer>
-          <div className="max-w-[295px] m-auto font-medium leading-6">
-            <div className="pt-4xlarge text-2xl">Details</div>
-            <div className="mt-2xlarge text-gray">
-              {thisProductDetails?.desc}
-            </div>
-            <div>
-              <div className="text-xl mt-2xlarge">
-                {thisProductDetails?.productTitle}
+        <div className="py-10">
+          <MobileContainer className="rounded-lg">
+            <div className="max-w-[295px] m-auto font-medium leading-6 pb-4xlarge">
+              <div className="pt-4xlarge text-2xl">Details</div>
+              <div className="mt-2xlarge text-gray">
+                {thisProductDetails?.desc}
               </div>
               <div>
-                {thisProductDetails?.productChar.map(item => (
-                  <div
-                    key={item.title}
-                    className="font-normal flex justify-between pb-2 border-[#CDCDCD] border-b-[1px] mt-6"
-                  >
-                    <div>{item.title}</div>
-                    <div className="max-w-[120px] text-end">{item.info}</div>
-                  </div>
-                ))}
+                <div className="text-xl mt-2xlarge">
+                  {thisProductDetails?.productTitle}
+                </div>
+                <div>
+                  {thisProductDetails?.productChar.map(item => (
+                    <div
+                      key={item.title}
+                      className="font-normal flex justify-between pb-2 border-[#CDCDCD] border-b-[1px] mt-6"
+                    >
+                      <div>{item.title}</div>
+                      <div className="max-w-[120px] text-end">{item.info}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center mt-2xlarge">
+                <Button className="min-h-4xlarge">View more</Button>
               </div>
             </div>
-            <div className="flex justify-center mt-2xlarge mb-4xlarge">
-              <Button className="min-h-4xlarge">View more</Button>
-            </div>
-          </div>
-        </MobileContainer>
+          </MobileContainer>
+        </div>
       </div>
+      <MobileContainer>
+        <RelatedProducts
+          productCategory={product.category}
+          productId={product.id}
+        />
+      </MobileContainer>
     </>
   );
 };
