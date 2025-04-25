@@ -8,6 +8,7 @@ import Button from '../button';
 import styles from './styles.module.scss';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
+import { StorageKeys } from '@/storage/localstorage';
 import { currencySymbols, type Product } from '@/types';
 
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
 
 export const ProductItem: React.FC<Props> = ({ product }) => {
   const [favorites, setFavorites] = useStorageValue<Array<number>>(
-    'favorites',
+    StorageKeys.favorites,
     [],
   );
   const router = useRouter();

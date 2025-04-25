@@ -1,5 +1,26 @@
-export const setStorage = (key: string, value: string) => {
-  localStorage.setItem(key, value);
+import { handleError } from '@/utils/error';
+
+export enum StorageKeys {
+  favorites = 'favorites',
+  visitedProductIds = 'visitedProductIds',
+}
+
+export const setStorage = (key: StorageKeys, value: string) => {
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, value);
+    }
+  } catch (e) {
+    handleError(e);
+  }
 };
 
-export const getStorage = (key: string) => localStorage.getItem(key);
+export const getStorage = (key: StorageKeys) => {
+  try {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(key);
+    }
+  } catch (e) {
+    handleError(e);
+  }
+};

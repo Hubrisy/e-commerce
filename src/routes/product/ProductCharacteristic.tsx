@@ -12,8 +12,8 @@ import {
   productDetails,
   productStorageSizes,
 } from './data';
+import { RelatedProducts } from './LastVisitedProducts';
 import { MobileContainer } from './MobileContainer';
-import { RelatedProducts } from './RelatedProducts';
 
 import Button from '@/components/button';
 

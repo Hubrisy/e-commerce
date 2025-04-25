@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import type { StorageKeys } from '@/storage/localstorage';
 import { handleError } from '@/utils/error';
 
-export const useStorageValue = <T>(key: string, defaultValue: T) => {
+export const useStorageValue = <T>(key: StorageKeys, defaultValue: T) => {
   const [value, setValue] = useState<T>(() => {
     try {
       if (typeof window !== 'undefined') {
