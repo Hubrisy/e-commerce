@@ -9,6 +9,10 @@ export const ProductStorage = () => {
     item => item.id === Number(query.id),
   );
 
+  if (!storageSize?.storageSizes.length) {
+    return null;
+  }
+
   return (
     <div className="mt-6 flex gap-2">
       {storageSize?.storageSizes.map(item => (

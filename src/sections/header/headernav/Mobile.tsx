@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BurgerBtn from '@assets/svg/icons/Burger.svg';
 import CloseBtn from '@assets/svg/icons/close2.svg';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { navigationItems, userIcons } from '../data';
 
@@ -10,8 +10,15 @@ import styles from './styles.module.scss';
 const MobileNav: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
 
+  const router = useRouter();
+
   const handleModal = () => {
     setIsModal(prev => !prev);
+  };
+
+  const goToAnotherPage = (link: string) => {
+    router.push(link);
+    setIsModal(false);
   };
 
   return (
@@ -32,8 +39,9 @@ const MobileNav: React.FC = () => {
                 <div
                   key={item.name}
                   className="cursor-pointer text-[18px] hover:text-black"
+                  onClick={() => goToAnotherPage(item.link)}
                 >
-                  <Link href={item.link}>{item.name}</Link>
+                  {item.name}
                 </div>
               ))}
             </div>
