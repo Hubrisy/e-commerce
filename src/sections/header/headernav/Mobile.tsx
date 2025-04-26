@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BurgerBtn from '@assets/svg/icons/Burger.svg';
 import CloseBtn from '@assets/svg/icons/close2.svg';
+import Link from 'next/link';
 
 import { navigationItems, userIcons } from '../data';
 
@@ -32,7 +33,7 @@ const MobileNav: React.FC = () => {
                   key={item.name}
                   className="cursor-pointer text-[18px] hover:text-black"
                 >
-                  {item.name}
+                  <Link href={item.link}>{item.name}</Link>
                 </div>
               ))}
             </div>
