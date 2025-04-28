@@ -4,6 +4,19 @@ html, body {
   @apply w-full text-gray-900 antialiased;
 }
 
+.last-seen_products .slick-slide > div {
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.last-seen_products .slick-track {
+  margin-left: -4px;
+  margin-right: -4px;
+}
+.last-seen_products .slick-dots {
+  bottom: -35px !important;
+}
+
 .slick-dots {
   bottom: 70px !important;
 }
