@@ -11,10 +11,40 @@ import { getStoredVisitedProductIds } from '@/utils/visitedProduct';
 const settings = {
   dots: true,
   arrows: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
-  slidesToShow: 2,
-  slidesToScroll: 2,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    // {
+    //   breakpoint: 1440, // при ширине экрана меньше 1024px
+    //   settings: {
+    //     slidesToShow: 4,
+    //     slidesToScroll: 4,
+    //   },
+    // },
+    {
+      breakpoint: 1024, // при ширине экрана меньше 1024px
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      breakpoint: 768, // при ширине экрана меньше 768px (планшеты)
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 480, // при ширине экрана меньше 480px (телефоны)
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ],
 };
 
 export const LastVisitedProducts: React.FC = () => {

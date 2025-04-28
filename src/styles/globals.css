@@ -5,13 +5,13 @@ html, body {
 }
 
 .last-seen_products .slick-slide > div {
-  padding: 0 8px;
+  padding: 0 0 0 16px;
   box-sizing: border-box;
 }
 
 .last-seen_products .slick-track {
-  margin-left: -4px;
-  margin-right: -4px;
+  margin-left: -8px;
+  margin-right: -8px;
 }
 .last-seen_products .slick-dots {
   bottom: -35px !important;

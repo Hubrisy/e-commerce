@@ -10,7 +10,7 @@ export const Details = () => {
   const details = productDetails.find(item => item.id === Number(query.id));
 
   return (
-    <div className="max-w-[295px] m-auto font-medium leading-6 pb-4xlarge">
+    <div className="w-[295px] m-auto font-medium leading-6 pb-4xlarge lg:w-[95%]">
       <div className="pt-4xlarge text-2xl">Details</div>
       <div className="mt-2xlarge text-gray">{details?.desc}</div>
       <div>

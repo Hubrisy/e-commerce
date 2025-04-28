@@ -13,13 +13,15 @@ export const Delivery = () => (
     {delivery.map(item => (
       <div
         key={item.title}
-        className="text-center text-[14px] font-medium leading-6"
+        className="text-center text-[14px] font-medium leading-6 lg:flex items-center"
       >
         <div className="min-h-14 w-14 m-auto bg-wildsand flex items-center justify-center rounded-xl">
           {item.img}
         </div>
-        <div className="text-[#717171]">{item.title}</div>
-        <div>{item.desc}</div>
+        <div className="lg:flex flex-col lg:text-start lg:ml-4">
+          <div className="text-[#717171]">{item.title}</div>
+          <div>{item.desc}</div>
+        </div>
       </div>
     ))}
   </div>
