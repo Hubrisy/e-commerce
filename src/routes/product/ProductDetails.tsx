@@ -4,16 +4,29 @@ import { Characteristics } from './sections/Characteristics';
 import { Colors } from './sections/Colors';
 import { Delivery } from './sections/Delivery';
 import { ProductStorage } from './sections/Storage';
+import type { ProductPageProps } from '.';
 import { productDescriptions } from './data';
 
 import Button from '@/components/button';
+import { useCartContext } from '@/context/Cart';
 
-export const ProductDetails = () => {
+export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
   const { query } = useRouter();
+  const { cart, setCart } = useCartContext();
 
   const descriptions = productDescriptions.find(
     item => item.id === Number(query.id),
   );
+
+  const addToCart = () => {
+    const productAlreadyInCart = cart.find(item => item.id === product.id);
+
+    if (productAlreadyInCart) {
+      return;
+    }
+
+    setCart([...cart, product]);
+  };
 
   return (
     <>
@@ -31,8 +44,9 @@ export const ProductDetails = () => {
           fullWidth
           className="min-h-[56px] mt-4 lg:min-w-[245px]"
           variant="primary"
+          onClick={addToCart}
         >
-          Add to card
+          Add to cart
         </Button>
       </div>
       <Delivery />

@@ -7,7 +7,6 @@ import { ProductFeatures } from './sections/productSection/ProductFeatures';
 import { Slider } from './sections/sliderSection';
 import { SummerSale } from './sections/SummerSale';
 
-import { FilterContextProvider } from '@/context/Filter';
 import { useProducts } from '@/hooks/use-products';
 import { SectionIds } from '@/types';
 
@@ -25,23 +24,21 @@ const Home = () => {
   );
 
   return (
-    <FilterContextProvider>
-      <div className="relative">
-        <MainScreen />
-        <BrowseByCategory />
-        <ProductSection
-          id={SectionIds.products}
-          products={productsForMainScreen ?? []}
-        >
-          <ProductFeatures />
-        </ProductSection>
-        <Slider />
-        <ProductSection products={productsForSale ?? []}>
-          <div className="text-2xl font-medium">Discounts up to -50%</div>
-        </ProductSection>
-        <SummerSale />
-      </div>
-    </FilterContextProvider>
+    <div className="relative">
+      <MainScreen />
+      <BrowseByCategory />
+      <ProductSection
+        id={SectionIds.products}
+        products={productsForMainScreen ?? []}
+      >
+        <ProductFeatures />
+      </ProductSection>
+      <Slider />
+      <ProductSection products={productsForSale ?? []}>
+        <div className="text-2xl font-medium">Discounts up to -50%</div>
+      </ProductSection>
+      <SummerSale />
+    </div>
   );
 };
 

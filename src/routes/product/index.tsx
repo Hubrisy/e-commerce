@@ -40,7 +40,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product }) => {
               <span>{product?.price}</span>
             </div>
           </div>
-          <ProductDetails />
+          <ProductDetails product={product} />
         </MobileContainer>
       </div>
       <div>

@@ -16,29 +16,22 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 4,
   responsive: [
-    // {
-    //   breakpoint: 1440, // при ширине экрана меньше 1024px
-    //   settings: {
-    //     slidesToShow: 4,
-    //     slidesToScroll: 4,
-    //   },
-    // },
     {
-      breakpoint: 1024, // при ширине экрана меньше 1024px
+      breakpoint: 1024,
       settings: {
         slidesToShow: 4,
         slidesToScroll: 4,
       },
     },
     {
-      breakpoint: 768, // при ширине экрана меньше 768px (планшеты)
+      breakpoint: 768,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
       },
     },
     {
-      breakpoint: 480, // при ширине экрана меньше 480px (телефоны)
+      breakpoint: 480,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -68,13 +61,15 @@ export const LastVisitedProducts: React.FC = () => {
     <div className="mt-14 mb-22">
       <div className="text-2xl font-medium">Last seen products</div>
       <div className="mt-2xlarge">
-        <Slider {...settings} className="last-seen_products">
-          {lastSeenProducts?.map(product => (
-            <div key={product.id}>
-              <ProductItem product={product} />
-            </div>
-          ))}
-        </Slider>
+        {lastSeenProducts.length > 0 && (
+          <Slider {...settings} className="last-seen_products">
+            {lastSeenProducts?.map(product => (
+              <div key={product.id}>
+                <ProductItem product={product} />
+              </div>
+            ))}
+          </Slider>
+        )}
       </div>
     </div>
   );
