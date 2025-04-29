@@ -61,7 +61,7 @@ export const LastVisitedProducts: React.FC = () => {
     <div className="mt-14 mb-22">
       <div className="text-2xl font-medium">Last seen products</div>
       <div className="mt-2xlarge">
-        {lastSeenProducts.length > 0 && (
+        {!!lastSeenProducts.length && (
           <Slider {...settings} className="last-seen_products">
             {lastSeenProducts?.map(product => (
               <div key={product.id}>

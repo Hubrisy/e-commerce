@@ -7,7 +7,7 @@ export const useStorageValue = <T>(key: StorageKeys, defaultValue: T) => {
   const [value, setValue] = useState<T>(() => {
     try {
       if (typeof window !== 'undefined') {
-        const storedValue = sessionStorage.getItem(key);
+        const storedValue = localStorage.getItem(key);
 
         if (storedValue) {
           return JSON.parse(storedValue);
@@ -22,7 +22,7 @@ export const useStorageValue = <T>(key: StorageKeys, defaultValue: T) => {
 
   useEffect(() => {
     try {
-      sessionStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
       handleError(error);
     }

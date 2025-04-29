@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 
 import { Characteristics } from './sections/Characteristics';
@@ -9,11 +10,18 @@ import { productDescriptions } from './data';
 
 import Button from '@/components/button';
 import { useCartContext } from '@/context/Cart';
+import { useFavorites } from '@/hooks/use-favorites';
 import { setStorage, StorageKeys } from '@/storage/localstorage';
 
 export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
   const { query } = useRouter();
   const { cart, setCart } = useCartContext();
+  const { isItemInFavorites, toggleFavorite, favorites } = useFavorites();
+
+  const isProductInFavorites = useMemo(
+    () => isItemInFavorites(product.id),
+    [favorites],
+  );
 
   const descriptions = productDescriptions.find(
     item => item.id === Number(query.id),
@@ -43,8 +51,12 @@ export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
         {descriptions?.description}
       </div>
       <div className="lg:flex justify-between">
-        <Button fullWidth className="min-h-[56px] mt-4 lg:min-w-[245px]">
-          Add to wishlist
+        <Button
+          fullWidth
+          className="min-h-[56px] mt-4 lg:min-w-[245px]"
+          onClick={() => toggleFavorite(product.id)}
+        >
+          {isProductInFavorites ? 'Remove from favorites' : 'Add to favorites'}
         </Button>
         <Button
           fullWidth

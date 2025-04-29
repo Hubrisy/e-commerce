@@ -7,8 +7,7 @@ import Button from '../button';
 
 import styles from './styles.module.scss';
 
-import { useStorageValue } from '@/hooks/use-storage-value';
-import { StorageKeys } from '@/storage/localstorage';
+import { useFavorites } from '@/hooks/use-favorites';
 import { currencySymbols, type Product } from '@/types';
 
 interface Props {
@@ -16,25 +15,8 @@ interface Props {
 }
 
 export const ProductItem: React.FC<Props> = ({ product }) => {
-  const [favorites, setFavorites] = useStorageValue<Array<number>>(
-    StorageKeys.favorites,
-    [],
-  );
   const router = useRouter();
-
-  const isItemInFavorites = (id: number) => favorites.some(item => item === id);
-
-  const toggleFavorite = (id: number) => {
-    const idExist = isItemInFavorites(id);
-
-    if (idExist) {
-      setFavorites(prev => prev.filter(item => item !== id));
-
-      return;
-    }
-
-    setFavorites(prev => [...prev, id]);
-  };
+  const { toggleFavorite, isItemInFavorites } = useFavorites();
 
   const goToProductPage = (slug: number) => {
     router.push(`/product/${slug}`);
