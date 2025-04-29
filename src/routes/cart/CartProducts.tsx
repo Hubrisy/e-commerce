@@ -2,17 +2,10 @@ import CloseBtn from '@assets/svg/icons/close3.svg';
 import Image from 'next/image';
 
 import { useCartContext } from '@/context/Cart';
-import { setStorage, StorageKeys } from '@/storage/localstorage';
 import { currencySymbols } from '@/types';
 
 export const CartProducts = () => {
-  const { cart, setCart } = useCartContext();
-
-  const deleteFromCart = (id: number) => {
-    const updateCart = cart.filter(item => item.id !== id);
-    setCart(updateCart);
-    setStorage(StorageKeys.cart, JSON.stringify(updateCart));
-  };
+  const { cart, deleteFromCart } = useCartContext();
 
   return (
     <div className="my-3xlarge">

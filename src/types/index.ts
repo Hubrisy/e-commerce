@@ -30,3 +30,7 @@ export interface Product {
 export enum SectionIds {
   products = 'products',
 }
+
+export interface CartItem extends Product {
+  quantity: number;
+}

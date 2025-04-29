@@ -11,11 +11,10 @@ import { productDescriptions } from './data';
 import Button from '@/components/button';
 import { useCartContext } from '@/context/Cart';
 import { useFavorites } from '@/hooks/use-favorites';
-import { setStorage, StorageKeys } from '@/storage/localstorage';
 
 export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
   const { query } = useRouter();
-  const { cart, setCart } = useCartContext();
+  const { addToCart } = useCartContext();
   const { isItemInFavorites, toggleFavorite, favorites } = useFavorites();
 
   const isProductInFavorites = useMemo(
@@ -26,21 +25,6 @@ export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
   const descriptions = productDescriptions.find(
     item => item.id === Number(query.id),
   );
-
-  const addToCart = () => {
-    const productAlreadyInCart = cart.find(item => item.id === product.id);
-
-    if (productAlreadyInCart) {
-      return;
-    }
-
-    const updateCart = [...cart, product];
-
-    if (updateCart.length) {
-      setCart(updateCart);
-      setStorage(StorageKeys.cart, JSON.stringify(updateCart));
-    }
-  };
 
   return (
     <>
@@ -62,7 +46,7 @@ export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
           fullWidth
           className="min-h-[56px] mt-4 lg:min-w-[245px]"
           variant="primary"
-          onClick={addToCart}
+          onClick={() => addToCart({ ...product, quantity: 1 })}
         >
           Add to cart
         </Button>

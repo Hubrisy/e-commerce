@@ -4,43 +4,68 @@ import {
   type PropsWithChildren,
   type SetStateAction,
   useContext,
-  useEffect,
-  useState,
 } from 'react';
 
-import { getStorage, StorageKeys } from '@/storage/localstorage';
-import type { Product } from '@/types';
+import { useStorageValue } from '@/hooks/use-storage-value';
+import { StorageKeys } from '@/storage/localstorage';
+import type { CartItem } from '@/types';
 
 interface CartTypes {
-  cart: Array<Product>;
-  setCart: Dispatch<SetStateAction<Array<Product>>>;
+  cart: Array<CartItem>;
+}
+
+interface CartContextTypes extends CartTypes {
+  setCart: Dispatch<SetStateAction<Array<CartItem>>>;
+  addToCart: (product: CartItem) => void;
+  deleteFromCart: (id: number) => void;
 }
 
 const defaultCartState: CartTypes = {
   cart: [],
-  setCart: () => {},
 };
 
-const CartContext = createContext(defaultCartState);
+const CartContext = createContext<CartContextTypes | undefined>(undefined);
 
 export const CartContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<Array<Product>>([]);
+  const [cart, setCart] = useStorageValue<CartTypes['cart']>(
+    StorageKeys.cart,
+    defaultCartState.cart,
+  );
 
-  useEffect(() => {
-    const storedCartProducts = getStorage(StorageKeys.cart);
+  const addToCart = (product: CartItem) => {
+    const productAlreadyInCart = cart.find(item => item.id === product.id);
 
-    if (storedCartProducts) {
-      setCart(JSON.parse(storedCartProducts));
+    if (productAlreadyInCart) {
+      return;
     }
-  }, []);
+
+    const updateCart = [...cart, product];
+
+    if (updateCart.length) {
+      setCart(updateCart);
+    }
+  };
+
+  const deleteFromCart = (id: number) => {
+    const updateCart = cart.filter(item => item.id !== id);
+    setCart(updateCart);
+  };
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, setCart, addToCart, deleteFromCart }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-export const useCartContext = () => useContext(CartContext);
+export const useCartContext = () => {
+  const value = useContext(CartContext);
+
+  if (!value) {
+    throw Error('useCartContext should be called inside CartContextProvider');
+  }
+
+  return value;
+};
