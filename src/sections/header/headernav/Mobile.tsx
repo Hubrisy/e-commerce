@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BurgerBtn from '@assets/svg/icons/Burger.svg';
 import CloseBtn from '@assets/svg/icons/close2.svg';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { navigationItems, userIcons } from '../data';
@@ -46,9 +47,9 @@ const MobileNav: React.FC = () => {
               ))}
             </div>
             <div className="flex gap-xlarge mt-[25px] items-center">
-              {userIcons.map((item, index) => (
-                <div className="cursor-pointer" key={index}>
-                  {item}
+              {userIcons.map(item => (
+                <div className="cursor-pointer" key={item.id}>
+                  <Link href={item.link}>{item.img}</Link>
                 </div>
               ))}
             </div>

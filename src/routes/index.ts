@@ -3,4 +3,7 @@ export enum Routes {
   about = '/about',
   contacts = '/contacts',
   blog = '/blog',
+  cart = '/cart',
+  favorites = '/favorites',
+  cabinet = '/cabinet',
 }

@@ -9,6 +9,7 @@ import { productDescriptions } from './data';
 
 import Button from '@/components/button';
 import { useCartContext } from '@/context/Cart';
+import { setStorage, StorageKeys } from '@/storage/localstorage';
 
 export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
   const { query } = useRouter();
@@ -25,7 +26,12 @@ export const ProductDetails: React.FC<ProductPageProps> = ({ product }) => {
       return;
     }
 
-    setCart([...cart, product]);
+    const updateCart = [...cart, product];
+
+    if (updateCart.length) {
+      setCart(updateCart);
+      setStorage(StorageKeys.cart, JSON.stringify(updateCart));
+    }
   };
 
   return (

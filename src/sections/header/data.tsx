@@ -5,9 +5,21 @@ import UserSVG from '@assets/svg/icons/user.svg';
 import { Routes } from '@/routes';
 
 export const userIcons = [
-  <CartSVG key="cart" />,
-  <HeartSVG key="heart" />,
-  <UserSVG key="user" />,
+  {
+    id: 1,
+    img: <CartSVG />,
+    link: Routes.cart,
+  },
+  {
+    id: 2,
+    img: <HeartSVG />,
+    link: Routes.favorites,
+  },
+  {
+    id: 3,
+    img: <UserSVG />,
+    link: Routes.cabinet,
+  },
 ];
 
 export const navigationItems = [

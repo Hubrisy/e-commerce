@@ -3,6 +3,7 @@ import { handleError } from '@/utils/error';
 export enum StorageKeys {
   favorites = 'favorites',
   visitedProductIds = 'visitedProductIds',
+  cart = 'cart',
 }
 
 export const setStorage = (key: StorageKeys, value: string) => {

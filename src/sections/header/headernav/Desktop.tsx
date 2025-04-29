@@ -12,9 +12,9 @@ const DesktopNav: React.FC = () => (
       ))}
     </div>
     <div className="flex ml-2xlarge gap-xlarge items-center">
-      {userIcons.map((item, index) => (
-        <div className="cursor-pointer" key={index}>
-          {item}
+      {userIcons.map(item => (
+        <div className="cursor-pointer" key={item.id}>
+          <Link href={item.link}>{item.img}</Link>
         </div>
       ))}
     </div>
