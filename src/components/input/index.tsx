@@ -1,8 +1,15 @@
-interface InputType extends React.InputHTMLAttributes<HTMLInputElement> {}
+import clsx from 'clsx';
 
-const Input: React.FC<InputType> = ({ ...rest }) => (
+interface InputType extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
+
+const Input: React.FC<InputType> = ({ className, ...rest }) => (
   <div>
-    <input className="border-1 border-solid m-2 rounded-lg p-1" {...rest} />
+    <input
+      className={clsx('border-1 border-solid rounded-lg p-1', className)}
+      {...rest}
+    />
   </div>
 );
 

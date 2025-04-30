@@ -1,3 +1,4 @@
+import { CartOrderSummary } from './CartOrderSummary';
 import { CartProducts } from './CartProducts';
 
 import { useCartContext } from '@/context/Cart';
@@ -11,6 +12,7 @@ const Cart = () => {
         <div>
           <div className="text-2xl font-semibold">Shopping cart:</div>
           <CartProducts />
+          <CartOrderSummary />
         </div>
       ) : (
         <div className="text-center text-2xl">Cart is empty</div>

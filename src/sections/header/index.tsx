@@ -11,7 +11,7 @@ const Header = () => (
   <div>
     <div
       className="w-full fixed z-500 min-h-[88px] top-[0px] flex justify-between font-weight-medium bg-white sm:items-center
-          sm:justify-center"
+          sm:justify-center shadow-custom"
     >
       <div className="flex justify-between mx-large w-full relative sm:justify-center sm:w-fit items-center sm:mx-0">
         <div>

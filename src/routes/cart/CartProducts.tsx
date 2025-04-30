@@ -5,7 +5,23 @@ import { useCartContext } from '@/context/Cart';
 import { currencySymbols } from '@/types';
 
 export const CartProducts = () => {
-  const { cart, deleteFromCart } = useCartContext();
+  const { cart, setCart, deleteFromCart } = useCartContext();
+
+  const increaseQuantity = (id: number) => {
+    const updatedCart = cart.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+    );
+    setCart(updatedCart);
+  };
+
+  const decreaseQuantity = (id: number) => {
+    const updatedCart = cart.map(item =>
+      item.id === id
+        ? { ...item, quantity: item.quantity <= 1 ? 1 : item.quantity - 1 }
+        : item,
+    );
+    setCart(updatedCart);
+  };
 
   return (
     <div className="my-3xlarge">
@@ -22,11 +38,11 @@ export const CartProducts = () => {
               </div>
               <div className="flex justify-between items-center">
                 <div className="flex min-w-[88px] justify-between items-center mt-2">
-                  <div>-</div>
+                  <div onClick={() => decreaseQuantity(item.id)}>-</div>
                   <div className="h-8 w-4xlarge border-[1px] rounded-sm border-[#D9D9D9] flex justify-center items-center">
-                    1
+                    {item.quantity}
                   </div>
-                  <div>+</div>
+                  <div onClick={() => increaseQuantity(item.id)}>+</div>
                 </div>
                 <div>
                   <span>{currencySymbols.USD}</span>

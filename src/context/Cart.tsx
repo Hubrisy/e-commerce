@@ -4,6 +4,8 @@ import {
   type PropsWithChildren,
   type SetStateAction,
   useContext,
+  useEffect,
+  useState,
 } from 'react';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
@@ -34,6 +36,8 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
     defaultCartState.cart,
   );
 
+  const [hasMounted, setHasMounted] = useState(false);
+
   const addToCart = (product: CartItem) => {
     const productAlreadyInCart = cart.find(item => item.id === product.id);
 
@@ -52,6 +56,12 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
     const updateCart = cart.filter(item => item.id !== id);
     setCart(updateCart);
   };
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) return null;
 
   return (
     <CartContext.Provider value={{ cart, setCart, addToCart, deleteFromCart }}>

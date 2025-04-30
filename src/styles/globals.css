@@ -47,5 +47,7 @@ html, body {
   --spacing-2xlarge: 32px;
   --spacing-3xlarge: 40px;
   --spacing-4xlarge: 48px;
+
+  --shadow-custom: 0px 0px 0px 1px rgb(140 140 140/.2);
 }
 
