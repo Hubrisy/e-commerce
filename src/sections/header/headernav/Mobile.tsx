@@ -9,10 +9,13 @@ import { navigationItems, userIcons } from '../data';
 import styles from './styles.module.scss';
 
 import { useCartContext } from '@/context/Cart';
+import { useMountContext } from '@/context/Mount';
+import { Routes } from '@/routes';
 
 const MobileNav: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
   const { cart } = useCartContext();
+  const { isMounted } = useMountContext();
 
   const router = useRouter();
 
@@ -52,8 +55,8 @@ const MobileNav: React.FC = () => {
             <div className="flex gap-xlarge mt-[25px] items-center">
               {userIcons.map(item => (
                 <div className="cursor-pointer relative" key={item.id}>
-                  {item.id === 1 && (
-                    <div className="absolute top-[-15px] right-[-10px] bg-[red] h-4 w-4 text-white rounded-[50%] flex justify-center items-center text-[12px]">
+                  {isMounted && item.link === Routes.cart && !!cart.length && (
+                    <div className="absolute top-[-15px] right-[-10px] bg-[red] h-4 w-4 text-white rounded-full flex justify-center items-center text-[12px]">
                       {cart.length}
                     </div>
                   )}

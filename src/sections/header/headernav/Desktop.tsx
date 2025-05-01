@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { navigationItems, userIcons } from '../data';
 
 import { useCartContext } from '@/context/Cart';
+import { useMountContext } from '@/context/Mount';
+import { Routes } from '@/routes';
 
 const DesktopNav: React.FC = () => {
+  const { isMounted } = useMountContext();
   const { cart } = useCartContext();
 
   return (
@@ -19,8 +22,8 @@ const DesktopNav: React.FC = () => {
       <div className="flex ml-2xlarge gap-xlarge items-center">
         {userIcons.map(item => (
           <div className="cursor-pointer relative" key={item.id}>
-            {item.id === 1 && (
-              <div className="absolute top-[-15px] right-[-10px] bg-[red] h-4 w-4 text-white rounded-[50%] flex justify-center items-center text-[12px]">
+            {isMounted && item.link === Routes.cart && !!cart.length && (
+              <div className="absolute top-[-15px] right-[-10px] bg-[red] h-4 w-4 text-white rounded-full flex justify-center items-center text-[12px]">
                 {cart.length}
               </div>
             )}
