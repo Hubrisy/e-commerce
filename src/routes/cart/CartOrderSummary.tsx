@@ -1,3 +1,7 @@
+import { useRouter } from 'next/router';
+
+import { Routes } from '..';
+
 import Button from '@/components/button';
 import Input from '@/components/input';
 import { useCartContext } from '@/context/Cart';
@@ -5,11 +9,16 @@ import { currencySymbols } from '@/types';
 
 export const CartOrderSummary = () => {
   const { cart } = useCartContext();
+  const router = useRouter();
 
   const orderSummary = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
+
+  const goToNextPage = () => {
+    router.push(Routes.form);
+  };
 
   return (
     <div className="rounded-xl border-[#EBEBEB] border-[1px]">
@@ -47,7 +56,11 @@ export const CartOrderSummary = () => {
           </div>
         </div>
         <div className="mt-4xlarge">
-          <Button variant="primary" className="w-full h-14">
+          <Button
+            variant="primary"
+            className="w-full h-14"
+            onClick={goToNextPage}
+          >
             Checkout
           </Button>
         </div>

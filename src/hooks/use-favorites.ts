@@ -1,12 +1,7 @@
-import { useStorageValue } from './use-storage-value';
-
-import { StorageKeys } from '@/storage/localstorage';
+import { useAppStateContext } from '@/context/AppState';
 
 export const useFavorites = () => {
-  const [favorites, setFavorites] = useStorageValue<Array<number>>(
-    StorageKeys.favorites,
-    [],
-  );
+  const { favorites, setFavorites } = useAppStateContext();
 
   const isItemInFavorites = (id: number) => favorites.some(item => item === id);
 

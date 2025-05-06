@@ -18,8 +18,8 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
   const router = useRouter();
   const { toggleFavorite, isItemInFavorites } = useFavorites();
 
-  const goToProductPage = (slug: number) => {
-    router.push(`/product/${slug}`);
+  const goToProductPage = (id: number) => {
+    router.push(`/product/${id}`);
   };
 
   return (

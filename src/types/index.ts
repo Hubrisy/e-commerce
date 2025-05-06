@@ -34,3 +34,12 @@ export enum SectionIds {
 export interface CartItem extends Product {
   quantity: number;
 }
+
+export interface UserData {
+  name: string;
+  secondName: string;
+  phone: string;
+  email: string;
+  city: string;
+  address: string;
+}
