@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BurgerBtn from '@assets/svg/icons/Burger.svg';
 import CloseBtn from '@assets/svg/icons/close2.svg';
 import Link from 'next/link';
@@ -10,12 +10,14 @@ import styles from './styles.module.scss';
 
 import { useCartContext } from '@/context/Cart';
 import { useMountContext } from '@/context/Mount';
+import { useFavorites } from '@/hooks/use-favorites';
 import { Routes } from '@/routes';
 
 const MobileNav: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
   const { cart } = useCartContext();
   const { isMounted } = useMountContext();
+  const { favorites } = useFavorites();
 
   const router = useRouter();
 
@@ -25,8 +27,19 @@ const MobileNav: React.FC = () => {
 
   const goToAnotherPage = (link: string) => {
     router.push(link);
-    setIsModal(false);
   };
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsModal(false);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <div className="p-[10px]">
@@ -60,6 +73,13 @@ const MobileNav: React.FC = () => {
                       {cart.length}
                     </div>
                   )}
+                  {isMounted &&
+                    item.link === Routes.favorites &&
+                    !!favorites.length && (
+                      <div className="absolute top-[-15px] right-[-10px] bg-[grey] h-4 w-4 text-white rounded-full flex justify-center items-center text-[12px]">
+                        {favorites.length}
+                      </div>
+                    )}
                   <Link href={item.link}>{item.img}</Link>
                 </div>
               ))}

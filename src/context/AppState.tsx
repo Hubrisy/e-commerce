@@ -1,5 +1,5 @@
 import type { Dispatch, PropsWithChildren, SetStateAction } from 'react';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
 import { StorageKeys } from '@/storage/localstorage';
@@ -31,7 +31,10 @@ const AppStateContext = createContext<AppStateContextTypes | undefined>(
 export const AppStateContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [user, setUser] = useState<AppStateTypes['user']>(defaultUser);
+  const [user, setUser] = useStorageValue<AppStateTypes['user']>(
+    StorageKeys.user,
+    defaultUser,
+  );
   const [favorites, setFavorites] = useStorageValue<AppStateTypes['favorites']>(
     StorageKeys.favorites,
     [],

@@ -45,12 +45,12 @@ module.exports = {
         "airbnb/hooks",
         "airbnb-typescript",
         "plugin:prettier/recommended",
-        'plugin:@next/next/recommended',
+        "plugin:@next/next/recommended",
       ],
       plugins: ["@typescript-eslint", "simple-import-sort", "unused-imports"],
       parser: "@typescript-eslint/parser",
       parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
       },
       rules: {
         "prettier/prettier": [
@@ -377,4 +377,3 @@ module.exports = {
     },
   ],
 };
-

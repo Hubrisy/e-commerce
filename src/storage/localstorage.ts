@@ -4,6 +4,7 @@ export enum StorageKeys {
   favorites = 'favorites',
   visitedProductIds = 'visitedProductIds',
   cart = 'cart',
+  user = 'user',
 }
 
 export const setStorage = (key: StorageKeys, value: string) => {

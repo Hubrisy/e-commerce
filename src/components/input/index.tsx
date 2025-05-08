@@ -5,12 +5,14 @@ interface InputType extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errorMsg?: string;
 }
 
 const Input: React.FC<InputType> = ({
   className,
   value,
   name,
+  errorMsg,
   onChange,
   ...rest
 }) => (
@@ -22,6 +24,7 @@ const Input: React.FC<InputType> = ({
       onChange={onChange}
       {...rest}
     />
+    {errorMsg && <div className="text-[12px] mt-2 text-[red]">{errorMsg}</div>}
   </div>
 );
 

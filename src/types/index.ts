@@ -43,3 +43,5 @@ export interface UserData {
   city: string;
   address: string;
 }
+
+export type ErrorsType = Record<keyof UserData, string>;

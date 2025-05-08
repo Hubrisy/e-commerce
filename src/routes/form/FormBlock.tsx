@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
+
+import { Routes } from '..';
 
 import Button from '@/components/button';
 import Input from '@/components/input';
 import { useAppStateContext } from '@/context/AppState';
-import type { UserData } from '@/types';
+import type { ErrorsType, UserData } from '@/types';
+import { emailValidation, validatePhoneNumber } from '@/utils/validation';
 
 export const FormBlock = () => {
   const router = useRouter();
   const { user, setUser } = useAppStateContext();
+  const [errors, setErrors] = useState<ErrorsType>(
+    Object.keys(user).reduce(
+      (acc, key) => ({ ...acc, [key]: '' }),
+      {} as ErrorsType,
+    ),
+  );
 
   const goToPrevPage = () => {
     router.back();
@@ -17,9 +27,41 @@ export const FormBlock = () => {
     setUser(prev => ({ ...prev, [name]: value }));
   };
 
+  const checkValid = (): boolean => {
+    const innerErrors: ErrorsType = Object.keys(user).reduce(
+      (acc, key) => ({ ...acc, [key]: '' }),
+      {} as ErrorsType,
+    );
+
+    if (user.name.length < 4 || user.name.length > 20) {
+      innerErrors.name = 'Your name must be between 4 and 20 characters';
+    }
+
+    if (user.secondName.length < 4 || user.secondName.length > 20) {
+      innerErrors.secondName =
+        'Your second name must be between 4 and 20 characters';
+    }
+
+    if (!emailValidation(user.email)) {
+      innerErrors.email = 'ooops something wrong with your email';
+    }
+
+    if (!validatePhoneNumber(user.phone)) {
+      innerErrors.phone = 'ooops something wrong with your number';
+    }
+
+    setErrors(innerErrors);
+
+    return Object.values(innerErrors).every(value => value === '');
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.stopPropagation();
     e.preventDefault();
+
+    if (checkValid()) {
+      router.push(Routes.payment);
+    }
   };
 
   return (
@@ -31,6 +73,7 @@ export const FormBlock = () => {
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
           placeholder="Your name"
           value={user.name}
+          errorMsg={errors.name}
           minLength={2}
           onChange={e => handleChange('name', e.target.value)}
           required
@@ -45,6 +88,7 @@ export const FormBlock = () => {
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
           placeholder="Your secondname"
           value={user.secondName}
+          errorMsg={errors.secondName}
           minLength={3}
           maxLength={16}
           onChange={e => handleChange('secondName', e.target.value)}
@@ -58,9 +102,10 @@ export const FormBlock = () => {
         <Input
           name="phone"
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
-          placeholder="Your secondname"
+          placeholder="Phone number"
           type="number"
           value={user.phone}
+          errorMsg={errors.phone}
           minLength={10}
           maxLength={12}
           onChange={e => handleChange('phone', e.target.value)}
@@ -74,6 +119,7 @@ export const FormBlock = () => {
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
           placeholder="Email"
           value={user.email}
+          errorMsg={errors.email}
           type="email"
           onChange={e => handleChange('email', e.target.value)}
           required
@@ -85,8 +131,9 @@ export const FormBlock = () => {
         <Input
           name="city"
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
-          placeholder="Your secondname"
+          placeholder="City"
           value={user.city}
+          errorMsg={errors.city}
           minLength={3}
           maxLength={16}
           onChange={e => handleChange('city', e.target.value)}
@@ -100,8 +147,9 @@ export const FormBlock = () => {
         <Input
           name="address"
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
-          placeholder="Your secondname"
+          placeholder="Address"
           value={user.address}
+          errorMsg={errors.address}
           onChange={e => handleChange('address', e.target.value)}
           required
         />
