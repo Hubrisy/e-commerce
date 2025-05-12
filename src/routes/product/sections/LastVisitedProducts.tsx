@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import Slider from 'react-slick';
+import { useRouter } from 'next/router';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -42,6 +43,7 @@ const settings = {
 
 export const LastVisitedProducts: React.FC = () => {
   const { products } = useProducts();
+  const { query } = useRouter();
 
   const lastSeenProducts = useMemo(() => {
     if (!products?.length) {
@@ -50,12 +52,18 @@ export const LastVisitedProducts: React.FC = () => {
 
     const storedProductIds = getStoredVisitedProductIds();
 
-    const filteredProducts = products.filter(product =>
-      storedProductIds.includes(product.id),
+    const filteredProducts = products.filter(
+      product =>
+        storedProductIds.includes(product.id) &&
+        product.id !== Number(query.id),
     );
 
     return filteredProducts;
   }, [products?.length]);
+
+  if (!lastSeenProducts?.length) {
+    return;
+  }
 
   return (
     <div className="mt-14 mb-22">
