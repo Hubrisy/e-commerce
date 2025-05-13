@@ -27,17 +27,19 @@ export const CartProducts = () => {
     <div className="my-3xlarge">
       {cart.map(item => (
         <div key={item.id}>
-          <div className="flex justify-between">
+          <div className="flex justify-between lg:justify-normal">
             <div>
               <Image width={90} height={90} src={item.img} alt="" />
             </div>
-            <div className="max-w-[240px] text-start">
+            <div className="min-w-[240px] max-w-[240px] text-start lg:ml-4 xl:flex xl:max-w-[90%] justify-between items-center">
               <div>
-                <div className="text-[16px] font-medium">{item.name}</div>
+                <div className="text-[16px] font-medium xl:min-w-[190px] xl:max-w-[190px]">
+                  {item.name}
+                </div>
                 <div className="mt-2">#000{item.id}</div>
               </div>
-              <div className="flex justify-between items-center">
-                <div className="flex min-w-[88px] justify-between items-center mt-2">
+              <div className="flex justify-between items-center mt-2 xl:min-w-[200px]">
+                <div className="flex min-w-[88px] justify-between items-center">
                   <div onClick={() => decreaseQuantity(item.id)}>-</div>
                   <div className="h-8 w-4xlarge border-[1px] rounded-sm border-[#D9D9D9] flex justify-center items-center">
                     {item.quantity}

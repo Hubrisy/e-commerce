@@ -7,7 +7,7 @@ import { MobileContainer } from './MobileContainer';
 export const ProductCharacteristics: React.FC = () => (
   <>
     <div className="bg-[#FAFAFA] mt-3xlarge">
-      <div className="py-10">
+      <div className="py-10 xl:py-20">
         <MobileContainer className="rounded-lg max-w-[80%]">
           <Details />
         </MobileContainer>

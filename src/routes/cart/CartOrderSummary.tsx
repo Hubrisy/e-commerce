@@ -21,8 +21,8 @@ export const CartOrderSummary = () => {
   };
 
   return (
-    <div className="rounded-xl border-[#EBEBEB] border-[1px]">
-      <div className="max-w-[310px] m-auto my-14">
+    <div className="rounded-xl border-[#EBEBEB] border-[1px] lg:py-7 lg:px-16 xl:py-14">
+      <div className="max-w-[310px] m-auto my-14 lg:min-w-[250px] xl:min-w-[350px]">
         <div className="text-2xl font-semibold">Order summary:</div>
         <div className="mt-3xlarge">
           <div>
