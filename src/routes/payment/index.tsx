@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 
 import { Routes } from '..';
 
-import CheckoutLayout from '@/components/CheckoutLayout';
-import Layout from '@/components/Layout';
+import { CheckoutLayout } from '@/components/CheckoutLayout';
 import { useAppStateContext } from '@/context/AppState';
 import { useMountContext } from '@/context/Mount';
 
@@ -22,21 +21,15 @@ const Payment = () => {
   }, [isUserValid]);
 
   if (!isMounted || !isUserValid) {
-    return <div className="mt-[128px]">Loading...</div>;
+    return <div className="mt-[48px]">Loading...</div>;
   }
 
   return (
-    <div className="mt-12 mb-3xlarge max-w-[340px] m-auto">
-      <div>Payment</div>
-    </div>
-  );
-};
-
-Payment.getLayout = function getLayout(page: React.ReactNode) {
-  return (
-    <Layout>
-      <CheckoutLayout>{page}</CheckoutLayout>
-    </Layout>
+    <CheckoutLayout>
+      <div className="mt-12 mb-3xlarge max-w-[340px] m-auto">
+        <div>Payment</div>
+      </div>
+    </CheckoutLayout>
   );
 };
 

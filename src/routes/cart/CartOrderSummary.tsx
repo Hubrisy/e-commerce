@@ -17,7 +17,7 @@ export const CartOrderSummary = () => {
   );
 
   const goToNextPage = () => {
-    router.push(Routes.form);
+    router.push(Routes.address);
   };
 
   return (

@@ -1,18 +1,20 @@
+import { type PropsWithChildren, useMemo } from 'react';
 import Line from '@assets/svg/icons/line.svg';
 import Location from '@assets/svg/icons/location.svg';
 import Payment from '@assets/svg/icons/payment.svg';
 import Shipping from '@assets/svg/icons/shipping.svg';
 import clsx from 'clsx';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Routes } from '@/routes';
 
 const steps = [
   {
-    title: 'Order form',
+    title: 'Address form',
     step: 'Step 1',
     img: <Location />,
-    path: Routes.form,
+    path: Routes.address,
   },
   {
     title: 'Shipping',
@@ -28,22 +30,18 @@ const steps = [
   },
 ];
 
-export default function CheckoutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const router = useRouter();
+export const CheckoutLayout: React.FC<PropsWithChildren> = ({ children }) => {
+  const { pathname } = useRouter();
 
-  const currentPath = router.pathname;
+  const pathIndex = steps.findIndex(item => item.path === pathname);
 
-  const pathIndex = steps.findIndex(item => item.path === currentPath);
+  const slicedSteps = useMemo(() => {
+    if (pathIndex === steps.length - 1) {
+      return steps.slice(pathIndex - 1, pathIndex + 1);
+    }
 
-  let slicedSteps = steps.slice(pathIndex, pathIndex + 2);
-
-  if (slicedSteps.length === 1) {
-    slicedSteps = steps.slice(pathIndex - 1, pathIndex + 1);
-  }
+    return steps.slice(pathIndex, pathIndex + 2);
+  }, [pathIndex]);
 
   return (
     <div className="mt-[128px] max-w-[340px] m-auto">
@@ -55,22 +53,24 @@ export default function CheckoutLayout({
                 <Line />
               </div>
             )}
-            <div
-              className={clsx(
-                'flex items-center',
-                router.pathname === item.path ? 'opacity-100' : 'opacity-50',
-              )}
-            >
-              <div>{item.img}</div>
-              <div className="ml-2">
-                <div className="text-[14px] leading-4">{item.step}</div>
-                <div>{item.title}</div>
+            <Link href={item.path}>
+              <div
+                className={clsx(
+                  'flex items-center',
+                  pathname === item.path ? 'opacity-100' : 'opacity-50',
+                )}
+              >
+                <div>{item.img}</div>
+                <div className="ml-2">
+                  <div className="text-[14px] leading-4">{item.step}</div>
+                  <div>{item.title}</div>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
       <div>{children}</div>
     </div>
   );
-}
+};
