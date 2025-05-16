@@ -60,7 +60,7 @@ export const FormBlock = () => {
     e.preventDefault();
 
     if (checkValid()) {
-      router.push(Routes.payment);
+      router.push(Routes.shipping);
     }
   };
 

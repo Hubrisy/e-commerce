@@ -31,6 +31,8 @@ export enum SectionIds {
   products = 'products',
 }
 
+export type ShippingTypes = 'free' | 'paid';
+
 export interface CartItem extends Product {
   quantity: number;
 }

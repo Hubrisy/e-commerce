@@ -5,14 +5,21 @@ import { useStorageValue } from '@/hooks/use-storage-value';
 import { StorageKeys } from '@/storage/localstorage';
 import type { UserData } from '@/types';
 
+interface OrderDetailsType extends UserData {
+  shippmentType: 'free' | 'paid';
+  price: string;
+}
+
 interface AppStateTypes {
   favorites: Array<number>;
   user: UserData;
+  orderDetails: OrderDetailsType;
 }
 
 interface AppStateContextTypes extends AppStateTypes {
   setUser: Dispatch<SetStateAction<AppStateTypes['user']>>;
   setFavorites: Dispatch<SetStateAction<AppStateTypes['favorites']>>;
+  setOrderDetails: Dispatch<SetStateAction<AppStateTypes['orderDetails']>>;
 }
 
 const defaultUser: UserData = {
@@ -22,6 +29,12 @@ const defaultUser: UserData = {
   email: '',
   city: '',
   address: '',
+};
+
+const defaultOrderDetails: OrderDetailsType = {
+  ...defaultUser,
+  shippmentType: 'free',
+  price: 'free',
 };
 
 const AppStateContext = createContext<AppStateContextTypes | undefined>(
@@ -35,6 +48,9 @@ export const AppStateContextProvider: React.FC<PropsWithChildren> = ({
     StorageKeys.user,
     defaultUser,
   );
+  const [orderDetails, setOrderDetails] = useStorageValue<
+    AppStateTypes['orderDetails']
+  >(StorageKeys.orderDetails, defaultOrderDetails);
   const [favorites, setFavorites] = useStorageValue<AppStateTypes['favorites']>(
     StorageKeys.favorites,
     [],
@@ -42,7 +58,14 @@ export const AppStateContextProvider: React.FC<PropsWithChildren> = ({
 
   return (
     <AppStateContext.Provider
-      value={{ user, setUser, favorites, setFavorites }}
+      value={{
+        user,
+        setUser,
+        favorites,
+        setFavorites,
+        orderDetails,
+        setOrderDetails,
+      }}
     >
       {children}
     </AppStateContext.Provider>
