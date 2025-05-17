@@ -27,6 +27,14 @@ export interface Product {
   isOnMainScreen?: boolean;
 }
 
+export interface ShippingProduct {
+  id: number;
+  type: string;
+  price: number;
+  description: string;
+  date: string;
+}
+
 export enum SectionIds {
   products = 'products',
 }

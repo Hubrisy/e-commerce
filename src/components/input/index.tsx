@@ -18,7 +18,10 @@ const Input: React.FC<InputType> = ({
 }) => (
   <div>
     <input
-      className={clsx('border-1 border-solid rounded-lg p-1', className)}
+      className={clsx(
+        'border-1 border-solid rounded-lg p-1 placeholder-[#979797]',
+        className,
+      )}
       value={value}
       name={name}
       onChange={onChange}

@@ -1,59 +1,19 @@
 import { useState } from 'react';
+import clsx from 'clsx';
 import { useRouter } from 'next/router';
 
 import { Routes } from '..';
 
 import Button from '@/components/button';
 import { CheckoutLayout } from '@/components/CheckoutLayout';
-import { useAppStateContext } from '@/context/AppState';
-import type { ShippingTypes } from '@/types';
-
-const getFormattedDate = (days: number) => {
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const date = new Date();
-  date.setDate(date.getDate() + days);
-
-  const day = date.getDate();
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-
-  return `${day} ${month}, ${year}`;
-};
-
-const shippingVariant = [
-  {
-    type: 'free',
-    price: 'free',
-    title: 'Free',
-    description: 'Regulary shipment',
-    date: getFormattedDate(14),
-  },
-  {
-    type: 'paid',
-    price: '$8.50',
-    title: '$8.50',
-    description: 'Get your delivery as soon as possible',
-    date: getFormattedDate(1),
-  },
-];
+import { useShipping } from '@/hooks/use-shipping';
+import type { ShippingProduct } from '@/types';
+import { currencySymbols } from '@/types';
 
 const Shipping = () => {
-  const { orderDetails, setOrderDetails } = useAppStateContext();
+  const { shipping } = useShipping();
 
-  const [shipping, setShipping] = useState<ShippingTypes>('free');
+  const [selectedShipping, setSelectedShipping] = useState<ShippingProduct>();
 
   const router = useRouter();
 
@@ -61,44 +21,51 @@ const Shipping = () => {
     router.back();
   };
 
-  const handleInput = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    itemPrice: string,
-  ) => {
-    const newShipping = e.target.value as ShippingTypes;
-    setShipping(newShipping);
-    setOrderDetails({
-      ...orderDetails,
-      shippmentType: newShipping,
-      price: itemPrice,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const id = e.target.value;
+
+    const shippingProduct = shipping?.find(item => item.id === Number(id));
+    setSelectedShipping(shippingProduct);
   };
 
   const goToNextPage = () => {
     router.push(Routes.payment);
   };
 
+  if (!shipping?.length) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <CheckoutLayout>
       <div className="mt-12 mb-3xlarge max-w-[340px] m-auto">
         <div className="text-2xl font-semibold">Shipment method</div>
         <div className="mt-8">
-          {shippingVariant.map(item => (
+          {shipping?.map(item => (
             <div
-              key={item.type}
-              className="p-6 border-[1px] border-[#D1D1D8] rounded-xl mb-4 flex justify-between items-center leading-6"
+              key={item.id}
+              className={clsx(
+                item.id === selectedShipping?.id
+                  ? 'text-black'
+                  : 'text-[#A2A3B1]',
+                'p-6 border-[1px] border-[#D1D1D8] rounded-xl mb-4 flex justify-between items-center leading-6',
+              )}
             >
               <div className="max-w-[148px]">
                 <input
                   type="radio"
                   name=""
-                  value={item.type}
-                  checked={item.type === shipping}
-                  onChange={e => handleInput(e, item.price)}
+                  value={item.id}
+                  checked={item.id === selectedShipping?.id}
+                  onChange={handleChange}
                   id=""
                   className="accent-black h-6 w-6"
                 />
-                <div className="font-medium">{item.title}</div>
+                <div className="font-medium">
+                  {item.price
+                    ? currencySymbols.USD + item.price.toFixed(2)
+                    : 'Free'}
+                </div>
                 <div>{item.description}</div>
               </div>
               <div>{item.date}</div>

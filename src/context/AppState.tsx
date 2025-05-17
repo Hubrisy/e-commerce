@@ -7,7 +7,7 @@ import type { UserData } from '@/types';
 
 interface OrderDetailsType extends UserData {
   shippmentType: 'free' | 'paid';
-  price: string;
+  price: number;
 }
 
 interface AppStateTypes {
@@ -34,7 +34,7 @@ const defaultUser: UserData = {
 const defaultOrderDetails: OrderDetailsType = {
   ...defaultUser,
   shippmentType: 'free',
-  price: 'free',
+  price: 0,
 };
 
 const AppStateContext = createContext<AppStateContextTypes | undefined>(

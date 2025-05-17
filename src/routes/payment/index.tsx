@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 
 import { Routes } from '..';
 
+import { PaymentForm } from './PaymentForm';
+
 import { CheckoutLayout } from '@/components/CheckoutLayout';
 import { useAppStateContext } from '@/context/AppState';
 import { useMountContext } from '@/context/Mount';
@@ -27,7 +29,8 @@ const Payment = () => {
   return (
     <CheckoutLayout>
       <div className="mt-12 mb-3xlarge max-w-[340px] m-auto">
-        <div>Payment</div>
+        <div className="text-2xl font-semibold">Payment</div>
+        <PaymentForm />
       </div>
     </CheckoutLayout>
   );

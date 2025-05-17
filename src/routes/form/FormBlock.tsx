@@ -70,7 +70,7 @@ export const FormBlock = () => {
         <div className="text-[14px] font-medium text-[#545454]">Name</div>
         <Input
           name="name"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Your name"
           value={user.name}
           errorMsg={errors.name}
@@ -85,7 +85,7 @@ export const FormBlock = () => {
         </div>
         <Input
           name="secondName"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Your secondname"
           value={user.secondName}
           errorMsg={errors.secondName}
@@ -101,7 +101,7 @@ export const FormBlock = () => {
         </div>
         <Input
           name="phone"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Phone number"
           type="number"
           value={user.phone}
@@ -116,7 +116,7 @@ export const FormBlock = () => {
         <div className="text-[14px] font-medium text-[#545454]">Email</div>
         <Input
           name="email"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Email"
           value={user.email}
           errorMsg={errors.email}
@@ -130,7 +130,7 @@ export const FormBlock = () => {
         <div className="text-[14px] font-medium text-[#545454]">City</div>
         <Input
           name="city"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="City"
           value={user.city}
           errorMsg={errors.city}
@@ -146,7 +146,7 @@ export const FormBlock = () => {
         </div>
         <Input
           name="address"
-          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] text-[#979797] font-normal"
+          className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Address"
           value={user.address}
           errorMsg={errors.address}
