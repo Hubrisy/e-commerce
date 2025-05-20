@@ -16,7 +16,7 @@ export const PaymentForm = () => {
   };
 
   const goToNextPage = () => {
-    router.push(Routes.thankspage);
+    router.push(Routes.successpage);
   };
 
   return (

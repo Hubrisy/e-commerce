@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 
@@ -6,14 +6,14 @@ import { Routes } from '..';
 
 import Button from '@/components/button';
 import { CheckoutLayout } from '@/components/CheckoutLayout';
+import { Loader } from '@/components/Loader';
+import { useCartContext } from '@/context/Cart';
 import { useShipping } from '@/hooks/use-shipping';
-import type { ShippingProduct } from '@/types';
 import { currencySymbols } from '@/types';
 
 const Shipping = () => {
   const { shipping } = useShipping();
-
-  const [selectedShipping, setSelectedShipping] = useState<ShippingProduct>();
+  const { selectedShipping, setSelectedShipping } = useCartContext();
 
   const router = useRouter();
 
@@ -25,15 +25,28 @@ const Shipping = () => {
     const id = e.target.value;
 
     const shippingProduct = shipping?.find(item => item.id === Number(id));
-    setSelectedShipping(shippingProduct);
+
+    if (shippingProduct) {
+      setSelectedShipping(shippingProduct);
+    }
   };
 
   const goToNextPage = () => {
     router.push(Routes.payment);
   };
 
+  useEffect(() => {
+    if (!selectedShipping && shipping?.length) {
+      setSelectedShipping(shipping[0]);
+    }
+  }, [selectedShipping, shipping?.length]);
+
   if (!shipping?.length) {
-    return <div>Loading...</div>;
+    return (
+      <div className="mt-[128px]">
+        <Loader />
+      </div>
+    );
   }
 
   return (

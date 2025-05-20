@@ -4,24 +4,28 @@ import {
   type PropsWithChildren,
   type SetStateAction,
   useContext,
+  useState,
 } from 'react';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
 import { StorageKeys } from '@/storage/localstorage';
-import type { CartItem } from '@/types';
+import type { CartItem, ShippingProduct } from '@/types';
 
 interface CartTypes {
   cart: Array<CartItem>;
+  selectedShipping?: ShippingProduct;
 }
 
 interface CartContextTypes extends CartTypes {
-  setCart: Dispatch<SetStateAction<Array<CartItem>>>;
+  setCart: Dispatch<SetStateAction<CartTypes['cart']>>;
   addToCart: (product: CartItem) => void;
   deleteFromCart: (id: number) => void;
+  setSelectedShipping: Dispatch<SetStateAction<CartTypes['selectedShipping']>>;
 }
 
 const defaultCartState: CartTypes = {
   cart: [],
+  selectedShipping: undefined,
 };
 
 const CartContext = createContext<CartContextTypes | undefined>(undefined);
@@ -33,6 +37,9 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
     StorageKeys.cart,
     defaultCartState.cart,
   );
+
+  const [selectedShipping, setSelectedShipping] =
+    useState<CartTypes['selectedShipping']>(undefined);
 
   const addToCart = (product: CartItem) => {
     const productAlreadyInCart = cart.find(item => item.id === product.id);
@@ -54,7 +61,16 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
   };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, deleteFromCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        deleteFromCart,
+        selectedShipping,
+        setSelectedShipping,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

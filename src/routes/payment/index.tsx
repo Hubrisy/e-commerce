@@ -6,6 +6,7 @@ import { Routes } from '..';
 import { PaymentForm } from './PaymentForm';
 
 import { CheckoutLayout } from '@/components/CheckoutLayout';
+import { Loader } from '@/components/Loader';
 import { useAppStateContext } from '@/context/AppState';
 import { useMountContext } from '@/context/Mount';
 
@@ -23,7 +24,11 @@ const Payment = () => {
   }, [isUserValid]);
 
   if (!isMounted || !isUserValid) {
-    return <div className="mt-[48px]">Loading...</div>;
+    return (
+      <div className="mt-[128px]">
+        <Loader />
+      </div>
+    );
   }
 
   return (

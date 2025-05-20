@@ -9,5 +9,5 @@ export enum Routes {
   address = '/address',
   shipping = '/shipping',
   payment = '/payment',
-  thankspage = '/thankspage',
+  successpage = '/successpage',
 }
