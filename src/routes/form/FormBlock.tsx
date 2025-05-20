@@ -7,7 +7,11 @@ import Button from '@/components/button';
 import Input from '@/components/input';
 import { useAppStateContext } from '@/context/AppState';
 import type { ErrorsType, UserData } from '@/types';
-import { emailValidation, isValidString, validatePhoneNumber } from '@/utils/validation';
+import {
+  emailValidation,
+  isValidString,
+  validatePhoneNumber,
+} from '@/utils/validation';
 
 export const FormBlock = () => {
   const router = useRouter();
