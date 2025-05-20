@@ -1,4 +1,4 @@
-import { getFormattedDate } from '@/utils/getDate';
+import { getFormattedDate } from '@/utils/date';
 
 interface ShippingVariantType {
   id: number;

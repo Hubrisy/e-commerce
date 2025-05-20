@@ -7,7 +7,7 @@ import Button from '@/components/button';
 import Input from '@/components/input';
 import { useAppStateContext } from '@/context/AppState';
 import type { ErrorsType, UserData } from '@/types';
-import { emailValidation, validatePhoneNumber } from '@/utils/validation';
+import { emailValidation, isValidString, validatePhoneNumber } from '@/utils/validation';
 
 export const FormBlock = () => {
   const router = useRouter();
@@ -33,11 +33,11 @@ export const FormBlock = () => {
       {} as ErrorsType,
     );
 
-    if (user.name.length < 4 || user.name.length > 20) {
+    if (!isValidString(user.name, 4, 20)) {
       innerErrors.name = 'Your name must be between 4 and 20 characters';
     }
 
-    if (user.secondName.length < 4 || user.secondName.length > 20) {
+    if (!isValidString(user.secondName, 4, 20)) {
       innerErrors.secondName =
         'Your second name must be between 4 and 20 characters';
     }

@@ -6,13 +6,14 @@ import { useAppStateContext } from '@/context/AppState';
 import { useCartContext } from '@/context/Cart';
 import { useMountContext } from '@/context/Mount';
 import { currencySymbols } from '@/types';
+import { calculateOrderSummary } from '@/utils/calculations';
 
 export const Summary = () => {
   const { cart, selectedShipping } = useCartContext();
   const { isMounted } = useMountContext();
   const { user } = useAppStateContext();
 
-  const orderSummary = cart.reduce((acc, item) => acc + item.price, 0);
+  const orderSummary = calculateOrderSummary(cart);
   const shippingPrice =
     typeof selectedShipping?.price === 'number' ? selectedShipping.price : 0;
 

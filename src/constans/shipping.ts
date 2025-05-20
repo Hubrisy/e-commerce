@@ -1,5 +1,5 @@
 import type { ShippingProduct } from '@/types';
-import { getFormattedDate } from '@/utils/getDate';
+import { getFormattedDate } from '@/utils/date';
 
 export const shippingVariant: Array<ShippingProduct> = [
   {
