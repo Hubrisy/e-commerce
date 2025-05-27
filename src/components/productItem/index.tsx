@@ -28,6 +28,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
       className="bg-wildsand py-xlarge min-w-[160px] flex flex-col items-center justify-center rounded-[9px]"
     >
       <div
+        data-testid="favorite-icon"
         onClick={() => toggleFavorite(product.id)}
         className={clsx(
           isItemInFavorites(product.id) ? styles.redsvg : styles.blacksvg,
@@ -50,6 +51,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
         {currencySymbols[product.currency]} {product.price}
       </div>
       <Button
+        data-testid="buy-now-button"
         variant="primary"
         className="w-[140px] min-h-[48px] mt-large sm:min-w-[140px]"
         onClick={() => goToProductPage(product.id)}
