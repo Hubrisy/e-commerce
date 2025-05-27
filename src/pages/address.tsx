@@ -1,1 +1,1 @@
-export { default } from '@/routes/form';
+export { default } from '@/routes/address';

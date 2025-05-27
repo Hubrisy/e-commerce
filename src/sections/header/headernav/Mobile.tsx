@@ -43,7 +43,7 @@ const MobileNav: React.FC = () => {
 
   return (
     <div className="p-[10px]">
-      <div onClick={handleModal} className="self-end">
+      <div onClick={handleModal} className="self-end mr-2.5">
         <BurgerBtn />
       </div>
       {isModal && (

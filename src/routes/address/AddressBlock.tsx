@@ -13,7 +13,7 @@ import {
   validatePhoneNumber,
 } from '@/utils/validation';
 
-export const FormBlock = () => {
+export const AddressBlock = () => {
   const router = useRouter();
   const { user, setUser } = useAppStateContext();
   const [errors, setErrors] = useState<ErrorsType>(
