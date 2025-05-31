@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
-import { Loader } from '../Loader';
-
+import { Loader } from '@/components/Loader';
 import { useAppStateContext } from '@/context/AppState';
 import { useCartContext } from '@/context/Cart';
 import { useMountContext } from '@/context/Mount';
@@ -38,6 +37,7 @@ export const Summary = () => {
               <Image src={item.img} alt={item.name} height={40} width={40} />
               <div>{item.name}</div>
               <div>{currencySymbols.USD + item.price}</div>
+              <div>Qnt: {item.quantity}</div>
             </div>
           ))}
         </div>

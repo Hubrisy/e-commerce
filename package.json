@@ -13,7 +13,7 @@
     "lint-staged": "eslint -c ./.eslintrc.js --fix",
     "lint:next": "next lint",
     "prepare": "husky install",
-    "precommit": "npm run lint-fix && npm run ts-lint",
+    "precommit": "npm run lint-fix && npm run ts-lint && npm run test",
     "githooks:commit-msg": "commitlint --edit",
     "test": "jest"
   },

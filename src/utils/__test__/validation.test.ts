@@ -101,7 +101,7 @@ describe('/utils/validation isValidString', () => {
   });
 
   test('should return true for an empty string', () => {
-    expect(isValidString('')).toBe(true);
+    expect(isValidString('', 0)).toBe(true);
   });
 
   test('should return false for a number', () => {

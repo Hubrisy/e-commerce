@@ -15,7 +15,7 @@ interface AppStateContextTypes extends AppStateTypes {
   setFavorites: Dispatch<SetStateAction<AppStateTypes['favorites']>>;
 }
 
-const defaultUser: UserData = {
+export const defaultUser: UserData = {
   name: '',
   secondName: '',
   phone: '',

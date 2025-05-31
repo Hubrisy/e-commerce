@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Summary Component Loader matches snapshot when not mounted 1`] = `
+<DocumentFragment>
+  <div
+    class="mt-[128px]"
+  >
+    <div
+      data-testid="loader"
+    >
+      Loading...
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Summary Component Summary matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="mt-5 border-[#EBEBEB] rounded-xl border-[1px] lg:max-w-full xl:min-w-[550px]"
+  >
+    <div
+      class="max-w-[90%] m-auto my-8"
+    >
+      <div
+        class="text-[20px] font-medium"
+      >
+        Summary
+      </div>
+      <div
+        class="my-6 text-[16px] font-medium"
+      >
+        <div
+          class="rounded-xl bg-[#F6F6F6] mb-4 flex p-2 justify-between items-center text-center"
+        >
+          <img
+            alt="Test Product"
+            height="40"
+            src="/test-product.jpg"
+            width="40"
+          />
+          <div>
+            Test Product
+          </div>
+          <div>
+            $99.99
+          </div>
+          <div>
+            Qnt: 2
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div
+            class="font-medium text-[14px]"
+          >
+            Address
+          </div>
+          <div
+            class="font-normal text-[16px] mt-2"
+          >
+            123 Test St, Test City, TC 12345
+          </div>
+        </div>
+        <div
+          class="mt-4"
+        >
+          <div
+            class="font-medium text-[14px]"
+          >
+            Shippment method
+          </div>
+          <div
+            class="font-normal text-[16px] mt-2"
+          >
+            Standard Shipping
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-6 text-[16px]"
+      >
+        <div
+          class="flex justify-between font-medium"
+        >
+          <div>
+            Subtotal
+          </div>
+          <div>
+            $199.98
+          </div>
+        </div>
+        <div
+          class="flex justify-between font-normal my-4"
+        >
+          <div>
+            Estimated shipping & Handling
+          </div>
+          <div>
+            $5.99
+          </div>
+        </div>
+        <div
+          class="flex justify-between font-medium"
+        >
+          <div>
+            Total
+          </div>
+          <div>
+            $205.97
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
