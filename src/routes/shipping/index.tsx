@@ -51,7 +51,7 @@ const Shipping = () => {
 
   return (
     <CheckoutLayout>
-      <div className="mt-12 mb-3xlarge max-w-[340px] m-auto">
+      <div className="mt-12 mb-3xlarge max-w-[340px] m-auto md:max-w-[100%] md:mx-0">
         <div className="text-2xl font-semibold">Shipment method</div>
         <div className="mt-8">
           {shipping?.map(item => (
@@ -64,7 +64,7 @@ const Shipping = () => {
                 'p-6 border-[1px] border-[#D1D1D8] rounded-xl mb-4 flex justify-between items-center leading-6',
               )}
             >
-              <div className="max-w-[148px]">
+              <div className="max-w-[148px] md:w-full">
                 <input
                   type="radio"
                   name=""

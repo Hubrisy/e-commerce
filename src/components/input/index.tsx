@@ -16,10 +16,10 @@ const Input: React.FC<InputType> = ({
   onChange,
   ...rest
 }) => (
-  <div>
+  <div className="w-full">
     <input
       className={clsx(
-        'border-1 border-solid rounded-lg p-1 placeholder-[#979797]',
+        'w-full border border-solid rounded-lg p-1 placeholder-[#979797]',
         className,
       )}
       value={value}

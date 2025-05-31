@@ -20,7 +20,7 @@ export const PaymentForm = () => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 lg:min-w-[400px]">
       <div className="flex justify-between">
         {paymentVariants.map((item, index) => (
           <div key={index}>
@@ -31,7 +31,7 @@ export const PaymentForm = () => {
         ))}
       </div>
       <div>
-        <div className="flex justify-center my-10">
+        <div className="flex justify-center my-10 md:justify-start">
           <Image
             src="/img/view/creditcard.png"
             alt="creditCard"
@@ -48,15 +48,12 @@ export const PaymentForm = () => {
             className="w-full mt-4 border-[#CECECE] p-4"
             placeholder="Card Number"
           />
-          <div className="flex justify-between mt-4">
+          <div className="flex mt-4 w-full gap-4">
             <Input
-              className="max-w-40 border-[#CECECE] p-4"
+              className="flex-1 border-[#CECECE] p-4"
               placeholder="Exp.Date"
             />
-            <Input
-              className="max-w-40 border-[#CECECE] p-4"
-              placeholder="CVV"
-            />
+            <Input className="flex-1 border-[#CECECE] p-4" placeholder="CVV" />
           </div>
         </div>
       </div>

@@ -1,4 +1,9 @@
-import { emailValidation, validatePhoneNumber } from '../validation';
+import {
+  emailValidation,
+  isString,
+  isValidString,
+  validatePhoneNumber,
+} from '../validation';
 
 describe('utils/validation emailValidation', () => {
   test('should return true for valid email', () => {
@@ -46,5 +51,94 @@ describe('/utils/validation validatePhoneNumber', () => {
     const actualResult = validatePhoneNumber('test');
     const expectedResult = false;
     expect(actualResult).toBe(expectedResult);
+  });
+});
+
+describe('/utils/validation isString', () => {
+  test('should return true for a string literal', () => {
+    expect(isString('yo')).toBe(true);
+  });
+
+  test('should return true for an empty string', () => {
+    expect(isString('')).toBe(true);
+  });
+
+  test('should return false for a number', () => {
+    expect(isString(123)).toBe(false);
+  });
+
+  test('should return false for a boolean', () => {
+    expect(isString(true)).toBe(false);
+  });
+
+  test('should return false for null', () => {
+    expect(isString(null)).toBe(false);
+  });
+
+  test('should return false for undefined', () => {
+    expect(isString(undefined)).toBe(false);
+  });
+
+  test('should return false for an object', () => {
+    expect(isString({})).toBe(false);
+  });
+
+  test('should return false for an array', () => {
+    expect(isString([])).toBe(false);
+  });
+
+  test('should return false for a function', () => {
+    expect(isString(() => {})).toBe(false);
+  });
+});
+
+describe('/utils/validation isValidString', () => {
+  test('should return false if length < 1', () => {
+    expect(isValidString('', 1, 300)).toBe(false);
+  });
+  test('should return true for a string literal', () => {
+    expect(isValidString('yo')).toBe(true);
+  });
+
+  test('should return true for an empty string', () => {
+    expect(isValidString('')).toBe(true);
+  });
+
+  test('should return false for a number', () => {
+    expect(isValidString(123)).toBe(false);
+  });
+
+  test('should return false for a boolean', () => {
+    expect(isValidString(true)).toBe(false);
+  });
+
+  test('should return false for null', () => {
+    expect(isValidString(null)).toBe(false);
+  });
+
+  test('should return false for undefined', () => {
+    expect(isValidString(undefined)).toBe(false);
+  });
+
+  test('should return false for an object', () => {
+    expect(isValidString({})).toBe(false);
+  });
+
+  test('should return false for an array', () => {
+    expect(isValidString([])).toBe(false);
+  });
+
+  test('should return false for a function', () => {
+    expect(isValidString(() => {})).toBe(false);
+  });
+  test('should return false if length is longer than max', () => {
+    const expectedResult = false;
+    const actualResult = isValidString('aaaa', 1, 3);
+    expect(expectedResult).toBe(actualResult);
+  });
+  test('should return false if length is shorter than min', () => {
+    const expectedResult = false;
+    const actualResult = isValidString('', 1, 3);
+    expect(expectedResult).toBe(actualResult);
   });
 });

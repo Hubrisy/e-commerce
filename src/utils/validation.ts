@@ -15,7 +15,7 @@ export const isString = (value: unknown): value is string =>
 
 export const isValidString = (
   value: unknown,
-  min = 0,
+  min = 1,
   max = 300,
 ): value is string => {
   if (!isString(value)) {
