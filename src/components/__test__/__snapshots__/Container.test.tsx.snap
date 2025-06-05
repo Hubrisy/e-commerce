@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="max-w-[1120px] mx-auto px-large test"
+  >
+    <div>
+      Test children
+    </div>
+  </div>
+</DocumentFragment>
+`;
