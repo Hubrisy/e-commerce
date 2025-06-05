@@ -1,22 +1,41 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { Routes } from '..';
 
+import { api } from '@/apis';
 import Button from '@/components/button';
 import Input from '@/components/input';
+import { useCartContext } from '@/context/Cart';
+import { handleError } from '@/utils/error';
 
 const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
 
 export const PaymentForm = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const { cart } = useCartContext();
 
   const goToPrevPage = () => {
     router.back();
   };
 
-  const goToNextPage = () => {
-    router.push(Routes.successpage);
+  const submitOrder = async () => {
+    setIsLoading(true);
+
+    try {
+      const orderWithId = await api.createOrder({ products: cart });
+
+      if (!orderWithId) {
+        throw new Error('Order creation failed');
+      }
+
+      router.push(Routes.success);
+    } catch (e) {
+      handleError(e);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -62,6 +81,7 @@ export const PaymentForm = () => {
           className="min-h-16 max-w-[160px]"
           onClick={goToPrevPage}
           type="button"
+          isDisabled={isLoading}
         >
           Back
         </Button>
@@ -69,7 +89,8 @@ export const PaymentForm = () => {
           className="min-h-16 max-w-[160px]"
           variant="primary"
           type="button"
-          onClick={goToNextPage}
+          onClick={submitOrder}
+          isLoading={isLoading}
         >
           Next
         </Button>
