@@ -8,13 +8,22 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const config: Config = {
-  coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   setupFiles: ['<rootDir>/jest.mock.setup.tsx'],
   moduleNameMapper: {
     '^@/(.*)': '<rootDir>/src/$1',
   },
+  // Coverage options
+  coverageProvider: 'v8',
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: [
+    'src/hooks/**/*.{js,jsx,ts,tsx}',
+    'src/components/**/*.{js,jsx,ts,tsx}',
+    'src/routes/**/*.{js,jsx,ts,tsx}',
+    'src/utils/**/*.{js,jsx,ts,tsx}',
+  ],
 };
 
 const jestConfig = async () => {

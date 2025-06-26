@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { shippingVariant } from '@/constans/shipping';
+import { shippingVariant } from '@/constants/shipping';
 import type { ShippingProduct } from '@/types';
 
 export default function handler(

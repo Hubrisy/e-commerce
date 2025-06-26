@@ -1,6 +1,6 @@
 import { handleError } from './error';
 
-import { getStorage, setStorage, StorageKeys } from '@/storage/localstorage';
+import { getStorage, setStorage, StorageKeys } from '@/utils/localstorage';
 
 export const getStoredVisitedProductIds = (): Array<number> => {
   try {

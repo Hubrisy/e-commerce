@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import type { StorageKeys } from '@/storage/localstorage';
+import type { StorageKeys } from '@/utils/localstorage';
 import { handleError } from '@/utils/error';
 
 export const useStorageValue = <T>(key: StorageKeys, defaultValue: T) => {

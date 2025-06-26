@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
-import { StorageKeys } from '@/storage/localstorage';
+import { StorageKeys } from '@/utils/localstorage';
 import type { CartItem, ShippingProduct } from '@/types';
 
 interface CartTypes {
