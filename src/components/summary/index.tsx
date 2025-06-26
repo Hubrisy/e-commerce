@@ -25,7 +25,7 @@ export const Summary = () => {
   }
 
   return (
-    <div className="mt-5 border-[#EBEBEB] rounded-xl border-[1px] lg:max-w-full xl:min-w-[550px]">
+    <div className="my-12 border-[#EBEBEB] rounded-xl border-[1px] lg:max-w-full xl:min-w-[550px]">
       <div className="max-w-[90%] m-auto my-8">
         <div className="text-[20px] font-medium">Summary</div>
         <div className="my-6 text-[16px] font-medium">

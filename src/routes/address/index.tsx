@@ -1,6 +1,6 @@
 import { AddressBlock } from './AddressBlock';
 
-import { CheckoutLayout } from '@/components/CheckoutLayout';
+import { CheckoutLayout } from '@/components/xcheckoutLayout';
 
 const Address = () => (
   <CheckoutLayout>

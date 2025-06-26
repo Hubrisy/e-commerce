@@ -1,11 +1,19 @@
-import { type JSX, type PropsWithChildren, useMemo } from 'react';
+import {
+  type JSX,
+  type PropsWithChildren,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import Location from '@assets/svg/icons/location.svg';
 import Payment from '@assets/svg/icons/payment.svg';
 import Shipping from '@assets/svg/icons/shipping.svg';
 import { useRouter } from 'next/router';
 
-import { DekstopCheckoutLayout } from './Dekstop';
-import { MobileCheckoutLayout } from './Mobile';
+import { Summary } from '../summary';
+
+import { DekstopCheckoutLayout } from './dekstop/Dekstop';
+import { MobileCheckoutLayout } from './mobile/Mobile';
 
 import { Routes } from '@/routes';
 
@@ -45,6 +53,19 @@ const steps: Array<StepsTypes> = [
 export const CheckoutLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const { pathname } = useRouter();
 
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const pathIndex = steps.findIndex(item => item.path === pathname);
 
   const slicedSteps = useMemo(() => {
@@ -63,7 +84,10 @@ export const CheckoutLayout: React.FC<PropsWithChildren> = ({ children }) => {
       <div className="hidden md:block">
         <DekstopCheckoutLayout pathname={pathname} steps={steps} />
       </div>
-      <div>{children}</div>
+      <div className="flex">
+        <div>{isDesktop && <Summary />}</div>
+        <div className="md:ml-4xlarge xl:mr-20">{children}</div>
+      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@ exports[`Summary Component Loader matches snapshot when not mounted 1`] = `
 exports[`Summary Component Summary matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="mt-5 border-[#EBEBEB] rounded-xl border-[1px] lg:max-w-full xl:min-w-[550px]"
+    class="my-12 border-[#EBEBEB] rounded-xl border-[1px] lg:max-w-full xl:min-w-[550px]"
   >
     <div
       class="max-w-[90%] m-auto my-8"

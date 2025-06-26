@@ -15,7 +15,7 @@ const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
 export const PaymentForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { cart } = useCartContext();
+  const { cart, setCart } = useCartContext();
 
   const goToPrevPage = () => {
     router.back();
@@ -31,6 +31,7 @@ export const PaymentForm = () => {
         throw new Error('Order creation failed');
       }
 
+      setCart([]);
       router.push(Routes.success);
     } catch (e) {
       handleError(e);
@@ -39,7 +40,7 @@ export const PaymentForm = () => {
   };
 
   return (
-    <div className="mt-6 lg:min-w-[400px]">
+    <div className="mt-6">
       <div className="flex justify-between">
         {paymentVariants.map((item, index) => (
           <div key={index}>
@@ -76,17 +77,16 @@ export const PaymentForm = () => {
           </div>
         </div>
       </div>
-      <div className="mt-16 flex justify-between">
+      <div className="mt-16 flex gap-6 justify-center xl:justify-end">
         <Button
-          className="min-h-16 max-w-[160px]"
+          className="min-h-16 flex-1 max-w-[150px]"
           onClick={goToPrevPage}
           type="button"
-          isDisabled={isLoading}
         >
           Back
         </Button>
         <Button
-          className="min-h-16 max-w-[160px]"
+          className="min-h-16 flex-1 max-w-[150px]"
           variant="primary"
           type="button"
           onClick={submitOrder}

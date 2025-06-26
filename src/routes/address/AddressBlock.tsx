@@ -69,7 +69,7 @@ export const AddressBlock = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="max-w-[340px] xl:min-w-[500px]">
       <div className="mt-3">
         <div className="text-[14px] font-medium text-[#545454]">Name</div>
         <Input
@@ -107,7 +107,8 @@ export const AddressBlock = () => {
           name="phone"
           className="w-full h-14 p-4 border-[#9F9F9F] mt-2 text-[14px] font-normal"
           placeholder="Phone number"
-          type="number"
+          type="string"
+          inputMode="tel"
           value={user.phone}
           errorMsg={errors.phone}
           minLength={10}
@@ -124,7 +125,8 @@ export const AddressBlock = () => {
           placeholder="Email"
           value={user.email}
           errorMsg={errors.email}
-          type="email"
+          type="string"
+          inputMode="email"
           onChange={e => handleChange('email', e.target.value)}
           required
         />
@@ -158,16 +160,16 @@ export const AddressBlock = () => {
           required
         />
       </div>
-      <div className="mt-16 flex justify-between">
+      <div className="mt-16 flex gap-6 xl:justify-end">
         <Button
-          className="min-h-16 max-w-[160px]"
+          className="min-h-16 flex-1 max-w-[150px]"
           onClick={goToPrevPage}
           type="button"
         >
           Back
         </Button>
         <Button
-          className="min-h-16 max-w-[160px]"
+          className="min-h-16 flex-1 max-w-[150px]"
           variant="primary"
           type="submit"
         >

@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DekstopCheckoutLayout should render correctly with first step active 1`] = `
+<div
+  class="flex justify-between"
+>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/address"
+    >
+      <div
+        class="flex items-center opacity-100"
+      >
+        <div>
+          <svg
+            data-testid="location-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 1
+          </div>
+          <div>
+            Address form
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/shipping"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="shipping-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 2
+          </div>
+          <div>
+            Shipping
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/payment"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="payment-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 3
+          </div>
+          <div>
+            Payment
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`DekstopCheckoutLayout should render correctly with second step active 1`] = `
+<div
+  class="flex justify-between"
+>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/address"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="location-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 1
+          </div>
+          <div>
+            Address form
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/shipping"
+    >
+      <div
+        class="flex items-center opacity-100"
+      >
+        <div>
+          <svg
+            data-testid="shipping-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 2
+          </div>
+          <div>
+            Shipping
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/payment"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="payment-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 3
+          </div>
+          <div>
+            Payment
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`DekstopCheckoutLayout should render correctly with third step active 1`] = `
+<div
+  class="flex justify-between"
+>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/address"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="location-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 1
+          </div>
+          <div>
+            Address form
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/shipping"
+    >
+      <div
+        class="flex items-center opacity-50"
+      >
+        <div>
+          <svg
+            data-testid="shipping-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 2
+          </div>
+          <div>
+            Shipping
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="flex items-center"
+  >
+    <a
+      href="/payment"
+    >
+      <div
+        class="flex items-center opacity-100"
+      >
+        <div>
+          <svg
+            data-testid="payment-icon"
+          />
+        </div>
+        <div
+          class="ml-2"
+        >
+          <div
+            class="text-[14px] leading-4"
+          >
+            Step 3
+          </div>
+          <div>
+            Payment
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;

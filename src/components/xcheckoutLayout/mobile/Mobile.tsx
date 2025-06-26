@@ -1,15 +1,21 @@
+import Line from '@assets/svg/icons/line.svg';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import type { CheckLayoutTypes } from '.';
+import type { CheckLayoutTypes } from '..';
 
-export const DekstopCheckoutLayout: React.FC<CheckLayoutTypes> = ({
+export const MobileCheckoutLayout: React.FC<CheckLayoutTypes> = ({
   pathname,
   steps,
 }) => (
   <div className="flex justify-between">
-    {steps.map(item => (
+    {steps.map((item, index) => (
       <div key={item.step} className="flex items-center">
+        {index === 1 && steps.length > 1 && (
+          <div>
+            <Line />
+          </div>
+        )}
         <Link href={item.path}>
           <div
             className={clsx(

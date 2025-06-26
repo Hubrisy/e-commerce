@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import LogoBlack from '@assets/svg/logos/LogoBlack.svg';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 
 import Navigation from '../navigation';
 
@@ -9,11 +10,18 @@ import MobileNav from './headernav/Mobile';
 import { ProductList } from './ProductList';
 
 import Input from '@/components/input';
+import { Routes } from '@/routes';
 
 const Header = () => {
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
+
+  const backToHomePage = () => {
+    router.push(Routes.home);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -37,7 +45,7 @@ const Header = () => {
           sm:justify-center shadow-custom"
       >
         <div className="flex justify-between mx-large w-full relative sm:justify-center sm:w-fit items-center sm:mx-0">
-          <div>
+          <div onClick={backToHomePage} className="cursor-pointer">
             <LogoBlack />
           </div>
           <div

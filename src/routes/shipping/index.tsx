@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { Routes } from '..';
 
 import Button from '@/components/button';
-import { CheckoutLayout } from '@/components/CheckoutLayout';
 import { Loader } from '@/components/Loader';
+import { CheckoutLayout } from '@/components/xcheckoutLayout';
 import { useCartContext } from '@/context/Cart';
 import { useShipping } from '@/hooks/use-shipping';
 import { currencySymbols } from '@/types';
@@ -51,11 +51,11 @@ const Shipping = () => {
 
   return (
     <CheckoutLayout>
-      <div className="mt-12 mb-3xlarge max-w-[340px] m-auto md:max-w-[100%] md:mx-0">
+      <div className="mt-12 mb-3xlarge max-w-[340px] m-auto md:mx-0 xl:min-w-[500px]">
         <div className="text-2xl font-semibold">Shipment method</div>
         <div className="mt-8">
           {shipping?.map(item => (
-            <div
+            <label
               key={item.id}
               className={clsx(
                 item.id === selectedShipping?.id
@@ -82,19 +82,19 @@ const Shipping = () => {
                 <div>{item.description}</div>
               </div>
               <div>{item.date}</div>
-            </div>
+            </label>
           ))}
         </div>
-        <div className="mt-16 flex justify-between">
+        <div className="mt-16 flex gap-6 xl:justify-end">
           <Button
-            className="min-h-16 max-w-[160px]"
+            className="min-h-16 flex-1 max-w-[150px]"
             onClick={goToPrevPage}
             type="button"
           >
             Back
           </Button>
           <Button
-            className="min-h-16 max-w-[160px]"
+            className="min-h-16 flex-1 max-w-[150px]"
             variant="primary"
             type="button"
             onClick={goToNextPage}
