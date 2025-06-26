@@ -2,8 +2,8 @@ import type { Dispatch, PropsWithChildren, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
 
 import { useStorageValue } from '@/hooks/use-storage-value';
-import { StorageKeys } from '@/utils/localstorage';
 import type { UserData } from '@/types';
+import { StorageKeys } from '@/utils/localstorage';
 
 interface AppStateTypes {
   favorites: Array<number>;

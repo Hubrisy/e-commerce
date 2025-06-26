@@ -16,7 +16,6 @@ const config: Config = {
   },
   // Coverage options
   coverageProvider: 'v8',
-  collectCoverage: true,
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
     'src/hooks/**/*.{js,jsx,ts,tsx}',
