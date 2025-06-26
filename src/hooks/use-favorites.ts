@@ -9,12 +9,12 @@ export const useFavorites = () => {
     const idExist = isItemInFavorites(id);
 
     if (idExist) {
-      setFavorites(prev => prev.filter(item => item !== id));
+      setFavorites(favorites.filter(item => item !== id));
 
       return;
     }
 
-    setFavorites(prev => [...prev, id]);
+    setFavorites([...favorites, id]);
   };
 
   return { favorites, setFavorites, toggleFavorite, isItemInFavorites };

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex justify-center items-center h-24"
+  >
+    <div
+      class="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin"
+    />
+  </div>
+</DocumentFragment>
+`;

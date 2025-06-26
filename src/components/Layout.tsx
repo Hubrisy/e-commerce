@@ -1,7 +1,7 @@
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
+export const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
     <Header />
     <main>{children}</main>

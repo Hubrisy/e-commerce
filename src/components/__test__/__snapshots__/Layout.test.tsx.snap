@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    Header Mock
+  </div>
+  <main>
+    <div>
+      Test Children
+    </div>
+  </main>
+  <div>
+    Footer Mock
+  </div>
+</DocumentFragment>
+`;
