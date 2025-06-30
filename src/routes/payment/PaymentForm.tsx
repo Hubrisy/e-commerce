@@ -15,7 +15,7 @@ const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
 export const PaymentForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { cart, setCart } = useCartContext();
+  const { cart, setCart, setPurchasedItems } = useCartContext();
 
   const goToPrevPage = () => {
     router.back();
@@ -31,7 +31,10 @@ export const PaymentForm = () => {
         throw new Error('Order creation failed');
       }
 
+      setPurchasedItems([...cart]);
+
       setCart([]);
+
       router.push(Routes.success);
     } catch (e) {
       handleError(e);

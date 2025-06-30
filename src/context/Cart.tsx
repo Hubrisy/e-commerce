@@ -13,11 +13,13 @@ import { StorageKeys } from '@/utils/localstorage';
 
 interface CartTypes {
   cart: Array<CartItem>;
+  purchasedItems: Array<CartItem>;
   selectedShipping?: ShippingProduct;
 }
 
 interface CartContextTypes extends CartTypes {
   setCart: Dispatch<SetStateAction<CartTypes['cart']>>;
+  setPurchasedItems: Dispatch<SetStateAction<CartTypes['cart']>>;
   addToCart: (product: CartItem) => void;
   deleteFromCart: (id: number) => void;
   setSelectedShipping: Dispatch<SetStateAction<CartTypes['selectedShipping']>>;
@@ -25,6 +27,7 @@ interface CartContextTypes extends CartTypes {
 
 const defaultCartState: CartTypes = {
   cart: [],
+  purchasedItems: [],
   selectedShipping: undefined,
 };
 
@@ -37,6 +40,10 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
     StorageKeys.cart,
     defaultCartState.cart,
   );
+
+  const [purchasedItems, setPurchasedItems] = useStorageValue<
+    CartTypes['purchasedItems']
+  >(StorageKeys.purchasedItems, defaultCartState.purchasedItems);
 
   const [selectedShipping, setSelectedShipping] =
     useState<CartTypes['selectedShipping']>(undefined);
@@ -64,6 +71,8 @@ export const CartContextProvider: React.FC<PropsWithChildren> = ({
     <CartContext.Provider
       value={{
         cart,
+        purchasedItems,
+        setPurchasedItems,
         setCart,
         addToCart,
         deleteFromCart,

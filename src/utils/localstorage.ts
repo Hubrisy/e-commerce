@@ -4,6 +4,7 @@ export enum StorageKeys {
   favorites = 'favorites',
   visitedProductIds = 'visitedProductIds',
   cart = 'cart',
+  purchasedItems = 'purchasedItems',
   user = 'user',
   orderDetails = 'orderDetails',
 }

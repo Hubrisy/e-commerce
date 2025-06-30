@@ -8,9 +8,11 @@ import { currencySymbols } from '@/types';
 import { calculateOrderSummary } from '@/utils/calculations';
 
 export const Summary = () => {
-  const { cart, selectedShipping } = useCartContext();
+  const { cart, purchasedItems, selectedShipping } = useCartContext();
   const { isMounted } = useMountContext();
   const { user } = useAppStateContext();
+
+  const summaryItems = cart.length > 0 ? cart : purchasedItems;
 
   const orderSummary = calculateOrderSummary(cart);
   const shippingPrice =
@@ -29,23 +31,55 @@ export const Summary = () => {
       <div className="max-w-[90%] m-auto my-8">
         <div className="text-[20px] font-medium">Summary</div>
         <div className="my-6 text-[16px] font-medium">
-          {cart.map(item => (
+          {summaryItems.map(item => (
             <div
               key={item.id}
-              className="rounded-xl bg-[#F6F6F6] mb-4 flex p-2 justify-between items-center text-center"
+              className="rounded-xl bg-[#F6F6F6] mb-4 flex flex-col p-2 px-6 justify-between"
             >
-              <Image src={item.img} alt={item.name} height={40} width={40} />
-              <div>{item.name}</div>
-              <div>{currencySymbols.USD + item.price}</div>
-              <div>Qnt: {item.quantity}</div>
+              <div className="flex justify-between items-center">
+                <Image src={item.img} alt={item.name} height={40} width={40} />
+                <div>
+                  {item.name.length > 40
+                    ? `${item.name.slice(0, 40)}…`
+                    : item.name}
+                </div>
+                <div>{currencySymbols.USD + item.price}</div>
+              </div>
+              <div className="text-center">Quantity: {item.quantity}</div>
             </div>
           ))}
         </div>
         <div>
-          <div>
-            <div className="font-medium text-[14px]">Address</div>
-            <div className="font-normal text-[16px] mt-2">{user.address}</div>
-          </div>
+          {user.name && user.secondName && (
+            <div>
+              <div className="font-medium text-[14px]">Full name</div>
+              <div className="font-normal text-[16px] mt-2">
+                <span>{user.name} </span>
+                <span>{user.secondName}</span>
+              </div>
+            </div>
+          )}
+          {user.phone && (
+            <div className="mt-4">
+              <div className="font-medium text-[14px]">Phone</div>
+              <div className="font-normal text-[16px] mt-2">{user.phone}</div>
+            </div>
+          )}
+          {user.email && (
+            <div className="mt-4">
+              <div className="font-medium text-[14px]">Email</div>
+              <div className="font-normal text-[16px] mt-2">{user.email}</div>
+            </div>
+          )}
+          {user.address && user.city && (
+            <div className="mt-4">
+              <div className="font-medium text-[14px]">Address</div>
+              <div className="font-normal text-[16px] mt-2">
+                <span>{user.city}, </span>
+                <span>{user.address}</span>
+              </div>
+            </div>
+          )}
           <div className="mt-4">
             <div className="font-medium text-[14px]">Shippment method</div>
             <div className="font-normal text-[16px] mt-2">
