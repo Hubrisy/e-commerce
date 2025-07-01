@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full mt-[88px] bg-[#2E2E2E] h-[48px] text-granite-grey font-medium hidden items-center justify-center md:flex"
+  >
+    <div
+      class="flex justify-center items-center"
+    >
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Phones
+        </div>
+        <div
+          class="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Computers
+        </div>
+        <div
+          class="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Smart watches
+        </div>
+        <div
+          class="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Cameras
+        </div>
+        <div
+          class="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Headphones
+        </div>
+        <div
+          class="h-[24px] w-[1px] bg-granite-grey md:mx-[10px] lg:mx-[36px] xl:mx-4xlarge"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center cursor-pointer"
+      >
+        <div>
+          <svg />
+        </div>
+        <div
+          class="ml-[8px]"
+        >
+          Gaming
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
