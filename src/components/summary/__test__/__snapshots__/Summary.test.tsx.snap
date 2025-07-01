@@ -31,7 +31,7 @@ exports[`Summary Component Summary matches snapshot 1`] = `
         class="my-6 text-[16px] font-medium"
       >
         <div
-          class="rounded-xl bg-[#F6F6F6] mb-4 flex flex-col p-2 px-6 justify-between"
+          class="rounded-xl bg-[#F6F6F6] mb-4 flex flex-col p-1 px-6 justify-between"
         >
           <div
             class="flex justify-between items-center"
@@ -42,7 +42,9 @@ exports[`Summary Component Summary matches snapshot 1`] = `
               src="/test-product.jpg"
               width="40"
             />
-            <div>
+            <div
+              class="text-center"
+            >
               Test Product
             </div>
             <div>

@@ -14,7 +14,7 @@ export const Summary = () => {
 
   const summaryItems = cart.length > 0 ? cart : purchasedItems;
 
-  const orderSummary = calculateOrderSummary(cart);
+  const orderSummary = calculateOrderSummary(summaryItems);
   const shippingPrice =
     typeof selectedShipping?.price === 'number' ? selectedShipping.price : 0;
 
@@ -34,13 +34,13 @@ export const Summary = () => {
           {summaryItems.map(item => (
             <div
               key={item.id}
-              className="rounded-xl bg-[#F6F6F6] mb-4 flex flex-col p-2 px-6 justify-between"
+              className="rounded-xl bg-[#F6F6F6] mb-4 flex flex-col p-1 px-6 justify-between"
             >
               <div className="flex justify-between items-center">
                 <Image src={item.img} alt={item.name} height={40} width={40} />
-                <div>
-                  {item.name.length > 40
-                    ? `${item.name.slice(0, 40)}…`
+                <div className="text-center">
+                  {item.name.length > 35
+                    ? `${item.name.slice(0, 35)}…`
                     : item.name}
                 </div>
                 <div>{currencySymbols.USD + item.price}</div>
