@@ -9,16 +9,78 @@ import Button from '@/components/button';
 import Input from '@/components/input';
 import { useCartContext } from '@/context/Cart';
 import { handleError } from '@/utils/error';
+import { isValidString } from '@/utils/validation';
 
 const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
+
+interface CardErrors {
+  cardHolderName: string;
+  cardNumber: string;
+  cardExpDate: string;
+  cardCVV: string;
+}
 
 export const PaymentForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { cart, setCart, setPurchasedItems } = useCartContext();
 
+  const [cardValue, setCardValue] = useState({
+    cardHolderName: '',
+    cardNumber: '',
+    cardExpDate: '',
+    cardCVV: '',
+  });
+  const [errors, setErrors] = useState<CardErrors>(
+    Object.keys(cardValue).reduce(
+      (acc, key) => ({ ...acc, [key]: '' }),
+      {} as CardErrors,
+    ),
+  );
+
   const goToPrevPage = () => {
     router.back();
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, ''); // оставляем только цифры
+
+    if (value.length > 4) value = value.slice(0, 4); // максимум 4 цифры
+
+    // вставляем "/" между MM и YY
+    if (value.length >= 3) {
+      value = `${value.slice(0, 2)}/${value.slice(2)}`;
+    }
+
+    setCardValue({ ...cardValue, cardExpDate: value });
+  };
+
+  const checkValid = () => {
+    const innerErrors: CardErrors = Object.keys(cardValue).reduce(
+      (acc, key) => ({ ...acc, [key]: '' }),
+      {} as CardErrors,
+    );
+
+    if (!isValidString(cardValue.cardHolderName, 6, 50)) {
+      innerErrors.cardHolderName =
+        'Your name must be between 4 and 20 characters';
+    }
+
+    if (!isValidString(cardValue.cardNumber, 16, 16)) {
+      innerErrors.cardNumber = 'Your card number must contain 16 digits';
+    }
+
+    if (!isValidString(cardValue.cardCVV, 3, 3)) {
+      innerErrors.cardCVV = 'Your CVV must contain 3 digits';
+    }
+
+    if (!isValidString(cardValue.cardExpDate, 4, 4)) {
+      innerErrors.cardExpDate = 'Your exp.date must contain 4 digits';
+    }
+
+    setErrors(innerErrors);
+
+    return Object.values(innerErrors).every(value => value === '');
   };
 
   const submitOrder = async () => {
@@ -31,14 +93,16 @@ export const PaymentForm = () => {
         throw new Error('Order creation failed');
       }
 
-      setPurchasedItems([...cart]);
+      if (checkValid()) {
+        setPurchasedItems([...cart]);
 
-      setCart([]);
+        setCart([]);
 
-      router.push({
-        pathname: Routes.success,
-        query: { orderId: orderWithId.id },
-      });
+        router.push({
+          pathname: Routes.success,
+          query: { orderId: orderWithId.id },
+        });
+      }
     } catch (e) {
       handleError(e);
       setIsLoading(false);
@@ -69,17 +133,43 @@ export const PaymentForm = () => {
           <Input
             className="w-full border-[#CECECE] p-4"
             placeholder="Cardholder Name"
+            value={cardValue.cardHolderName}
+            onChange={e =>
+              setCardValue({ ...cardValue, cardHolderName: e.target.value })
+            }
+            errorMsg={errors.cardHolderName}
           />
           <Input
             className="w-full mt-4 border-[#CECECE] p-4"
             placeholder="Card Number"
+            inputMode="numeric"
+            type="number"
+            value={cardValue.cardNumber}
+            onChange={e =>
+              setCardValue({ ...cardValue, cardNumber: e.target.value })
+            }
+            errorMsg={errors.cardNumber}
           />
           <div className="flex mt-4 w-full gap-4">
             <Input
               className="flex-1 border-[#CECECE] p-4"
-              placeholder="Exp.Date"
+              placeholder="Exp.Date MM/YY"
+              inputMode="numeric"
+              value={cardValue.cardExpDate}
+              onChange={handleChange}
+              errorMsg={errors.cardExpDate}
             />
-            <Input className="flex-1 border-[#CECECE] p-4" placeholder="CVV" />
+            <Input
+              className="flex-1 border-[#CECECE] p-4"
+              placeholder="CVV"
+              inputMode="numeric"
+              type="number"
+              value={cardValue.cardCVV}
+              onChange={e =>
+                setCardValue({ ...cardValue, cardCVV: e.target.value })
+              }
+              errorMsg={errors.cardCVV}
+            />
           </div>
         </div>
       </div>

@@ -10,6 +10,23 @@ export const validatePhoneNumber = (phoneNumber: string) => {
   return regex.test(phoneNumber);
 };
 
+// export const isNumber = (value: unknown): value is number =>
+//   typeof value === 'number';
+
+// export const isValidNumber = (
+//   value: unknown,
+//   min = 1,
+//   max = 300,
+// ): value is string => {
+//   if (!isNumber(value)) {
+//     return false;
+//   }
+
+//   const digits = (value.match(/\d/g) || []).length;
+
+//   return digits >= min && digits <= max;
+// };
+
 export const isString = (value: unknown): value is string =>
   typeof value === 'string';
 
