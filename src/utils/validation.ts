@@ -10,8 +10,8 @@ export const validatePhoneNumber = (phoneNumber: string) => {
   return regex.test(phoneNumber);
 };
 
-// export const isNumber = (value: unknown): value is number =>
-//   typeof value === 'number';
+export const isNumber = (value: unknown): value is number =>
+  typeof value === 'number';
 
 // export const isValidNumber = (
 //   value: unknown,

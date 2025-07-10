@@ -9,7 +9,7 @@ import Button from '@/components/button';
 import Input from '@/components/input';
 import { useCartContext } from '@/context/Cart';
 import { handleError } from '@/utils/error';
-import { isValidString } from '@/utils/validation';
+import { isNumber, isValidString } from '@/utils/validation';
 
 const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
 
@@ -42,17 +42,24 @@ export const PaymentForm = () => {
     router.back();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/\D/g, ''); // оставляем только цифры
+  // slash for card exp.date
+  const handleInputExpDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '');
 
-    if (value.length > 4) value = value.slice(0, 4); // максимум 4 цифры
+    if (value.length > 4) value = value.slice(0, 4);
 
-    // вставляем "/" между MM и YY
     if (value.length >= 3) {
       value = `${value.slice(0, 2)}/${value.slice(2)}`;
     }
 
     setCardValue({ ...cardValue, cardExpDate: value });
+  };
+
+  // spaces for card number
+  const formatCardNumber = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, '');
+
+    return digitsOnly.match(/.{1,4}/g)?.join(' ') || '';
   };
 
   const checkValid = () => {
@@ -66,15 +73,15 @@ export const PaymentForm = () => {
         'Your name must be between 4 and 20 characters';
     }
 
-    if (!isValidString(cardValue.cardNumber, 16, 16)) {
+    if (!isNumber(cardValue.cardNumber)) {
       innerErrors.cardNumber = 'Your card number must contain 16 digits';
     }
 
-    if (!isValidString(cardValue.cardCVV, 3, 3)) {
+    if (!isNumber(cardValue.cardCVV)) {
       innerErrors.cardCVV = 'Your CVV must contain 3 digits';
     }
 
-    if (!isValidString(cardValue.cardExpDate, 4, 4)) {
+    if (!isNumber(cardValue.cardExpDate)) {
       innerErrors.cardExpDate = 'Your exp.date must contain 4 digits';
     }
 
@@ -143,11 +150,13 @@ export const PaymentForm = () => {
             className="w-full mt-4 border-[#CECECE] p-4"
             placeholder="Card Number"
             inputMode="numeric"
-            type="number"
+            minLength={19}
+            maxLength={19}
             value={cardValue.cardNumber}
-            onChange={e =>
-              setCardValue({ ...cardValue, cardNumber: e.target.value })
-            }
+            onChange={e => {
+              const formatted = formatCardNumber(e.target.value);
+              setCardValue({ ...cardValue, cardNumber: formatted });
+            }}
             errorMsg={errors.cardNumber}
           />
           <div className="flex mt-4 w-full gap-4">
@@ -156,15 +165,16 @@ export const PaymentForm = () => {
               placeholder="Exp.Date MM/YY"
               inputMode="numeric"
               value={cardValue.cardExpDate}
-              onChange={handleChange}
+              onChange={handleInputExpDate}
               errorMsg={errors.cardExpDate}
             />
             <Input
               className="flex-1 border-[#CECECE] p-4"
               placeholder="CVV"
               inputMode="numeric"
-              type="number"
               value={cardValue.cardCVV}
+              minLength={3}
+              maxLength={3}
               onChange={e =>
                 setCardValue({ ...cardValue, cardCVV: e.target.value })
               }
