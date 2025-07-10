@@ -77,7 +77,7 @@ export const CheckoutLayout: React.FC<PropsWithChildren> = ({ children }) => {
   }, [pathIndex]);
 
   return (
-    <div className="mt-[128px] max-w-[340px] m-auto md:max-w-[90%] lg:max-w-[80%]">
+    <div className="mt-[128px] m-auto md:max-w-[90%] lg:max-w-[80%] xl:max-w-[1100px]">
       <div className="block md:hidden">
         <MobileCheckoutLayout pathname={pathname} steps={slicedSteps} />
       </div>

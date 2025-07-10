@@ -27,6 +27,10 @@ html, body {
   height: 12px !important;
 }
 
+.custom-width{
+  max-width: 1100px;
+}
+
 @theme inline {
   --color-cultured: #f5f5f5;
   --color-granite-grey: #656565;
@@ -49,5 +53,7 @@ html, body {
   --spacing-4xlarge: 48px;
 
   --shadow-custom: 0px 0px 0px 1px rgb(140 140 140/.2);
+
+  --main-container: 1100px;
 }
 

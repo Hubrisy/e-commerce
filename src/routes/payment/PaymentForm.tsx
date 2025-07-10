@@ -35,7 +35,10 @@ export const PaymentForm = () => {
 
       setCart([]);
 
-      router.push(Routes.success);
+      router.push({
+        pathname: Routes.success,
+        query: { orderId: orderWithId.id },
+      });
     } catch (e) {
       handleError(e);
       setIsLoading(false);
