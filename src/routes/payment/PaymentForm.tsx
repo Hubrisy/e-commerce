@@ -8,24 +8,27 @@ import { api } from '@/apis';
 import Button from '@/components/button';
 import Input from '@/components/input';
 import { useCartContext } from '@/context/Cart';
+import type { ErrorsType } from '@/types';
 import { handleError } from '@/utils/error';
 import { isNumber, isValidString } from '@/utils/validation';
 
 const paymentVariants = ['Credit Card', 'PayPal', 'PayPal Credit'];
 
-interface CardErrors {
+interface CardState {
   cardHolderName: string;
   cardNumber: string;
   cardExpDate: string;
   cardCVV: string;
 }
 
+type CardErrors = ErrorsType<CardState>;
+
 export const PaymentForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { cart, setCart, setPurchasedItems } = useCartContext();
 
-  const [cardValue, setCardValue] = useState({
+  const [cardValue, setCardValue] = useState<CardState>({
     cardHolderName: '',
     cardNumber: '',
     cardExpDate: '',
@@ -42,6 +45,11 @@ export const PaymentForm = () => {
     router.back();
   };
 
+  const onChange = (name: keyof CardState, value: string) => {
+    setCardValue({ ...cardValue, [name]: value });
+    setErrors({ ...errors, [name]: '' });
+  };
+
   // slash for card exp.date
   const handleInputExpDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, '');
@@ -52,7 +60,7 @@ export const PaymentForm = () => {
       value = `${value.slice(0, 2)}/${value.slice(2)}`;
     }
 
-    setCardValue({ ...cardValue, cardExpDate: value });
+    onChange('cardExpDate', value);
   };
 
   // spaces for card number
@@ -68,9 +76,9 @@ export const PaymentForm = () => {
       {} as CardErrors,
     );
 
-    if (!isValidString(cardValue.cardHolderName, 6, 50)) {
+    if (!isValidString(cardValue.cardHolderName, 4, 50)) {
       innerErrors.cardHolderName =
-        'Your name must be between 4 and 20 characters';
+        'Your name must be between 4 and 50 characters';
     }
 
     if (!isNumber(cardValue.cardNumber)) {
@@ -94,24 +102,25 @@ export const PaymentForm = () => {
     setIsLoading(true);
 
     try {
-      const orderWithId = await api.createOrder({ products: cart });
-
-      if (!orderWithId) {
-        throw new Error('Order creation failed');
-      }
-
       if (checkValid()) {
+        const orderWithId = await api.createOrder({ products: cart });
+
+        if (!orderWithId) {
+          throw new Error('Order creation failed');
+        }
+
         setPurchasedItems([...cart]);
 
         setCart([]);
 
-        router.push({
+        await router.push({
           pathname: Routes.success,
           query: { orderId: orderWithId.id },
         });
       }
     } catch (e) {
       handleError(e);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -141,9 +150,7 @@ export const PaymentForm = () => {
             className="w-full border-[#CECECE] p-4"
             placeholder="Cardholder Name"
             value={cardValue.cardHolderName}
-            onChange={e =>
-              setCardValue({ ...cardValue, cardHolderName: e.target.value })
-            }
+            onChange={e => onChange('cardHolderName', e.target.value)}
             errorMsg={errors.cardHolderName}
           />
           <Input
@@ -155,7 +162,7 @@ export const PaymentForm = () => {
             value={cardValue.cardNumber}
             onChange={e => {
               const formatted = formatCardNumber(e.target.value);
-              setCardValue({ ...cardValue, cardNumber: formatted });
+              onChange('cardNumber', formatted);
             }}
             errorMsg={errors.cardNumber}
           />
@@ -175,9 +182,7 @@ export const PaymentForm = () => {
               value={cardValue.cardCVV}
               minLength={3}
               maxLength={3}
-              onChange={e =>
-                setCardValue({ ...cardValue, cardCVV: e.target.value })
-              }
+              onChange={e => onChange('cardCVV', e.target.value)}
               errorMsg={errors.cardCVV}
             />
           </div>

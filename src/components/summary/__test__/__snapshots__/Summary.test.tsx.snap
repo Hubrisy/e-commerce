@@ -52,7 +52,7 @@ exports[`Summary Component Summary matches snapshot 1`] = `
             </div>
           </div>
           <div
-            class="text-center"
+            class="self-start"
           >
             Quantity: 2
           </div>

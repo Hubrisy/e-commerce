@@ -6,7 +6,7 @@ import { Routes } from '..';
 import Button from '@/components/button';
 import Input from '@/components/input';
 import { useAppStateContext } from '@/context/AppState';
-import type { ErrorsType, UserData } from '@/types';
+import type { ErrorsUserData, UserData } from '@/types';
 import {
   emailValidation,
   isValidString,
@@ -16,10 +16,10 @@ import {
 export const AddressBlock = () => {
   const router = useRouter();
   const { user, setUser } = useAppStateContext();
-  const [errors, setErrors] = useState<ErrorsType>(
+  const [errors, setErrors] = useState<ErrorsUserData>(
     Object.keys(user).reduce(
       (acc, key) => ({ ...acc, [key]: '' }),
-      {} as ErrorsType,
+      {} as ErrorsUserData,
     ),
   );
 
@@ -32,9 +32,9 @@ export const AddressBlock = () => {
   };
 
   const checkValid = (): boolean => {
-    const innerErrors: ErrorsType = Object.keys(user).reduce(
+    const innerErrors: ErrorsUserData = Object.keys(user).reduce(
       (acc, key) => ({ ...acc, [key]: '' }),
-      {} as ErrorsType,
+      {} as ErrorsUserData,
     );
 
     if (!isValidString(user.name, 4, 20)) {

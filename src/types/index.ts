@@ -54,4 +54,6 @@ export interface UserData {
   address: string;
 }
 
-export type ErrorsType = Record<keyof UserData, string>;
+export type ErrorsType<T> = Record<keyof T, string>;
+
+export type ErrorsUserData = ErrorsType<UserData>;

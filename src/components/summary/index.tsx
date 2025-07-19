@@ -45,7 +45,7 @@ export const Summary = () => {
                 </div>
                 <div>{currencySymbols.USD + item.price}</div>
               </div>
-              <div className="text-center">Quantity: {item.quantity}</div>
+              <div className="self-start">Quantity: {item.quantity}</div>
             </div>
           ))}
         </div>

@@ -64,6 +64,7 @@ const Button: React.FC<PropsWithChildren<ButtonType>> = ({
       )}
       onClick={onClick}
       type={type}
+      disabled={!!isLoading || !!isDisabled}
       {...rest}
     >
       {children}
