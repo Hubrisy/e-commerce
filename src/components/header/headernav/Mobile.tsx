@@ -41,6 +41,16 @@ const MobileNav: React.FC = () => {
     };
   }, [router]);
 
+  useEffect(() => {
+    if (isModal) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModal]);
+
   return (
     <div className="p-[10px]">
       <div onClick={handleModal} className="self-end mr-2.5">
