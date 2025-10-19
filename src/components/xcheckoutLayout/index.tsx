@@ -78,13 +78,13 @@ export const CheckoutLayout: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className="mt-[128px] m-auto md:max-w-[90%] lg:max-w-[80%] xl:max-w-[1100px]">
-      <div className="block md:hidden">
+      <div className="block max-w-[320px] m-auto md:hidden">
         <MobileCheckoutLayout pathname={pathname} steps={slicedSteps} />
       </div>
       <div className="hidden md:block">
         <DekstopCheckoutLayout pathname={pathname} steps={steps} />
       </div>
-      <div className="flex">
+      <div className="flex justify-center">
         <div>{isDesktop && <Summary />}</div>
         <div className="md:ml-4xlarge xl:mr-20">{children}</div>
       </div>
